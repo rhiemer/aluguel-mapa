@@ -1,0 +1,25 @@
+[{
+    "titulo": "Rua General Severiano, 76",
+    "complemento": "Botafogo, Rio de Janeiro - Brasil",
+    "coordenadas": {
+        "latitude": 10.00,
+        "longitude": 10.00
+    }    
+},
+{
+    "titulo": "Rua Teixeira de Freitas, 70",
+    "complemento": "Lapa, Rio de Janeiro - Brasil",
+    "coordenadas": {
+        "latitude": 20.00,
+        "longitude": 20.00
+    }    
+},
+{
+    "titulo": "Rua Marquesa dos Santos, 27",
+    "complemento": "Laranjeiras, Rio de Janeiro - Brasil",
+    "coordenadas": {
+        "latitude": 30.00,
+        "longitude": 30.00
+    }    
+}
+]

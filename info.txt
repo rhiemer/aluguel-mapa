@@ -1,0 +1,40 @@
+--servidor
+java -Dspring.datasource.password=root -jar cdcreact-1.0.0-SNAPSHOT.jar
+
+--criar projeto
+npm install create-react-app@0.5.0
+node_modules/.bin/create-react-app cdc-admin
+
+--instalar bibliotecas
+npm install jquery --save
+npm install --save pubsub-js@1.5.3
+npm install react-router@2.7.0 --save
+npm install --save prop-types
+npm install react-number-format --save
+
+--build
+npm run build
+npm install pushstate-server
+./node_modules/.bin/pushstate-server build
+
+
+--instalura
+java -jar -Dspring.datasource.password=root instalura.jar
+usuário = alots, senha = 123456;
+usuário = rafael, senha = 123456;
+usuário = vitor, senha = 123456
+npm install react-router@3.0.0 --save
+npm install redux@3.6.0 --save
+npm install redux-thunk@2.2.0 --save
+npm install immutable@3.8.1 --save
+npm install react-redux@5.0.2 --save
+---server side
+npm install gulp-cli
+npm install yo
+npm install generator-electrode
+
+npm run-script toolbox
+	
+/d/desenvolvimento/fontes/react/projetos/aluguel/aluguel
+
+: Objects are not valid as a React child (found: object with keys ). If you meant to render a collection of children, use an array instead or wrap the object using createFragment(object) from the React add-ons. Check the render method of `Autocomplete`.

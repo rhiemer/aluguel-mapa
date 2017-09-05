@@ -19,6 +19,7 @@ import {HEADER_FORM_MAPA} from '../constants';
 import {localidadeHeaderMapSelector} from '../selectors';
 import {listarLocalidadeHeader} from '../actions';
 import BuscarLocalidadesAutoComplete from './BuscarLocalidadesAutoComplete'
+import {NoSpaceRowBuscarLocalidade} from './styles';
 
 class BuscarLocalidades extends Component {
 
@@ -35,16 +36,18 @@ class BuscarLocalidades extends Component {
     render() {
         const {handleSubmit, listarLocalidade, listaLocalidade} = this.props;
         return (
-            <FormGroup controlId="formHorizontalEmail" onSubmit={handleSubmit}>
-                <Col sm={6}>
-                    <Field
-                        name="mapa.header.pesquisalocalidades"
-                        {...this.props}
-                        component={BuscarLocalidadesAutoComplete}/>
-                </Col>
-                <Col sm={6}>
-                    <Button type="submit" bsStyle="primary"><FontAwesome name="search"/></Button>
-                </Col>
+            <FormGroup controlId="formHorizontalEmail" onSubmit={handleSubmit} >
+                <NoSpaceRowBuscarLocalidade>
+                    <Col sm={3}>
+                        <Field
+                            name="mapa.header.pesquisalocalidades"
+                            {...this.props}
+                            component={BuscarLocalidadesAutoComplete}/>
+                    </Col>
+                    <Col>
+                        <Button type="submit" bsStyle="primary"><FontAwesome name="search"/></Button>
+                    </Col>
+                </NoSpaceRowBuscarLocalidade>
             </FormGroup>
         );
     }
@@ -57,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
         const filtro = "General";
         dispatch(listarLocalidadeHeader(filtro));
     },
-    listarLocalidade: (filtro) => {        
+    listarLocalidade: (filtro) => {
         dispatch(listarLocalidadeHeader(filtro));
     }
 });

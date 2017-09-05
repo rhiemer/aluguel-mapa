@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HeaderMapa from './HeaderMapa'
+import MainMapPageMapa from './GeoLocalizacao'
 
 export default class Mapa extends Component {
 
@@ -9,6 +10,7 @@ export default class Mapa extends Component {
             <div id="navbar-wrapper">
                 <header>
                     <HeaderMapa/>
+                    <MainMapPageMapa/>
                 </header>
             </div>
         );

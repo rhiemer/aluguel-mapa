@@ -11,8 +11,7 @@ export function listarLocalidadeHeader(filtro) {
         const filteredData = pesquisaLocalidadesHeader.filter(function (data) {
             return data.titulo.toLowerCase().includes(filtro.toLowerCase()) || 
                    data.complemento.toLowerCase().includes(filtro.toLowerCase())
-        });   
-        console.log(filteredData)
+        });           
         return filteredData;        
     } catch (err) {
         console.error("Erro listarLocalidadeHeader",err)

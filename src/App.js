@@ -4,6 +4,7 @@ import Mapa from './containers/mapa';
 import './assets/react-toolbox/theme.css';
 import theme from './assets/react-toolbox/theme.js';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
+import GeoLocalizacao from './containers/mapa/GeoLocalizacao'
 
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
           <div className="App">
             <Mapa/>          
           </div>
-        </ThemeProvider>
+        </ThemeProvider>        
       </div>
     );
   }

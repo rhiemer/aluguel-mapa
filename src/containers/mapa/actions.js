@@ -1,5 +1,5 @@
 import {
-    MAPA_LISTAR_LOCALIDADE_HEADER,
+    MAPA_LISTAR_LOCALIDADE_HEADER
 } from './constants';
 
 export const listarLocalidadeHeader = (filtro) => {          
@@ -9,3 +9,4 @@ export const listarLocalidadeHeader = (filtro) => {
       filtro,
     });
   };
+

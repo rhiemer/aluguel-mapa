@@ -24,15 +24,16 @@ export default function createRoutes(store) {
       indexRoute: {
         getComponent(nextState, cb) {
           const importModules = Promise.all([
-            import('./containers/mapa/reducer'),  
+            import('./containers/mapa/reducer'),              
             import('./containers/mapa/sagas'),
+            import('./containers/mapa/GeoLocalizacao/sagas'),
             import('./containers/mapa'),
           ]);
 
           const renderRoute = loadModule(cb);
 
           importModules.then(([reducer, sagas, component]) => {            
-            injectReducer('mapa', reducer.default);  
+            injectReducer('mapa', reducer.default); 
             injectSagas(sagas.default);
             renderRoute(component);
           });

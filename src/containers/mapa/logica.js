@@ -16,4 +16,5 @@ export function listarLocalidadeHeader(filtro) {
     } catch (err) {
         console.error("Erro listarLocalidadeHeader",err)
     }    
-}    
+}
+

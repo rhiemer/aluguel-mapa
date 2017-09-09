@@ -48,14 +48,7 @@ export function getScale(rowIndex, rowFrom, rowTo, K_SCALE_NORMAL) {
 
 // this calculations is not precise (dirty)
 function _getRealFromTo(rowFrom, rowTo, maxVisibleRows, totalSize) {
-  let addFrom = ((rowFrom + maxVisibleRows + K_SCALES_SUM) > (totalSize - 1)) ? ((rowFrom + maxVisibleRows + K_SCALES_SUM) - (totalSize - 1)) : 0;
-  console.log(addFrom)
-  console.log(rowFrom)
-  console.log(rowTo)
-  console.log(maxVisibleRows)
-  console.log(totalSize)
-  
-
+  let addFrom = ((rowFrom + maxVisibleRows + K_SCALES_SUM) > (totalSize - 1)) ? ((rowFrom + maxVisibleRows + K_SCALES_SUM) - (totalSize - 1)) : 0; 
   const dadd = K_SCALES_SUM - rowFrom;
   let addTo = dadd >= 0 ? dadd : 0;
 

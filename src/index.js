@@ -1,6 +1,7 @@
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/styles/google/googleapis.css';
+import './assets/styles/sass/app.css';
 import theme from './assets/styles/react-toolbox/theme.js';
 import 'react-select/dist/react-select.css';
 

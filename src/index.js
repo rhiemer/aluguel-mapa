@@ -2,8 +2,8 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/styles/google/googleapis.css';
 import './assets/styles/sass/app.css';
-import theme from './assets/styles/react-toolbox/theme.js';
 import 'react-select/dist/react-select.css';
+
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,7 +19,7 @@ import configureStore from './store';
 import App from './App';
 import LanguageProvider from './containers/LanguageProvider';
 import { selectLocationState } from './containers/App/selectors';
-import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
+
 
 const browserHistory = useRouterHistory(createHistory)({
   basename: '/mapa/',

@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {reduxForm} from 'redux-form/immutable';
 import {Field} from 'redux-form/immutable';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import SimpleMapPage from './SimpleMapPage'
 
 import {LISTAR_ANUNCIOS_MAPA} from '../constants';
 import {listarAnunciosMapaSelector} from './selectors';
 import {listarAnunciosMapa} from './actions';
 import MainMapBlock from '../../../componentes/mainMapBlock'
+import TableAnuncios from '../../../componentes/tableAnuncios'
 
 class GeoLocalizacao extends React.PureComponent {
 
@@ -30,16 +30,22 @@ class GeoLocalizacao extends React.PureComponent {
     render() {        
         const {listarAnuncios,markers,getAnuncios,handleSubmit} = this.props;
         return (
+
             <form onSubmit={handleSubmit}>
-                <div
-                    style={{
-                    width: '100%',
-                    height: '400px'
-                }}>
-                <Field name="mapa.geoLocalizacao" {...this.props} component={MainMapBlock}/> 
+                <div>
+                <div>  
+                    <div
+                        style={{
+                        width: '100%',
+                        height: '400px'
+                    }}>
+                    <Field name="mapa.geoLocalizacao" {...this.props} component={MainMapBlock}/> 
+                    </div>
+                    <button type="submit">Listar Localidades</button>
+                    </div>   
+                    <Field name="tabela.geoLocalizacao" {...this.props} component={TableAnuncios}/>                
                 </div>
-                <button type="submit">Listar Localidades</button>                
-            </form>
+            </form>            
         );
     }
 }

@@ -1,17 +1,15 @@
 import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import controllable from 'react-controllables';
-
-
-import IceTableInt from './ice_table_int.jsx';
-
 // TODO pass in props in future versions
+import IceTable from '../iceTable';
 import {columns, cellRenderer, getRowClassNameAt, renderHeader, renderMiniHeader,
-        K_ROW_HEIGHT, K_HEADER_HEIGHT, K_MINI_HEADER_HEIGHT} from './ice_table_renderer.js';
+    K_ROW_HEIGHT, K_HEADER_HEIGHT, K_MINI_HEADER_HEIGHT} from './ice_table_renderer.js';
+
+
 
 const K_MIN_DEFAULT_ROWS_SIZE = 0;
 
-class IceTable extends Component {
+export default class TableAnuncios extends Component {
   static propTypes = {
     markers: PropTypes.any,
     hoveredRowIndex: PropTypes.number,
@@ -27,21 +25,24 @@ class IceTable extends Component {
     hoveredRowIndex: -1,
     hoveredMapRowIndex: -1,
     firstInvisibleRowIndex: -1,
-    resetToStartObj: {}
+    resetToStartObj: {},
+    markers:[]
   };
 
   shouldComponentUpdate = shouldPureComponentUpdate;
 
   constructor(props) {
     super(props);
-    this.columnDefs = columns;
+    this.columnDefs = columns;    
   }
 
   _cellRenderer = (cellDataKey, rowData, rowIndex) => {
+    console.log(`_cellRenderer`)
     return cellRenderer(cellDataKey, rowData, rowIndex);
   }
 
   _getRowObjectAt = (i) => {
+    console.log(`_getRowObjectAt ${this.props.markers}`)
     return this.props.markers && this.props.markers.get(i);
   }
 
@@ -75,16 +76,20 @@ class IceTable extends Component {
     }
   }
 
-  render() {
+  render() {    
+    const _rowsCount=((this.props.markers && this.props.markers.length) || K_MIN_DEFAULT_ROWS_SIZE)
+    console.log(`render ${_rowsCount}`)
+    
     return (
-      <IceTableInt
+      <IceTable
+        data={this.props.markers}
         columnDefs={this.columnDefs}
         cellRenderer={this._cellRenderer}
         getRowObjectAt={this._getRowObjectAt}
         getRowClassNameAt={this._getRowClassNameAt}
         renderHeader={this._renderHeader}
         renderMiniHeader={this._renderMiniHeader}
-        rowsCount={this.props.markers && this.props.markers.length || K_MIN_DEFAULT_ROWS_SIZE}
+        rowsCount={_rowsCount}
         headerHeight={K_HEADER_HEIGHT}
         miniHeaderHeight={K_MINI_HEADER_HEIGHT}
         rowHeight={K_ROW_HEIGHT}
@@ -96,6 +101,3 @@ class IceTable extends Component {
     );
   }
 }
-
-IceTable  = controllable(IceTable ,['onHoveredRowIndexChange']);
-export default IceTable

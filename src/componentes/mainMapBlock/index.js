@@ -92,14 +92,11 @@ class MainMapBlock extends Component {
   _distanceToMouse = customDistanceToMouse;
 
   render() {
-    console.log("size="+this.props.markers.length)    
-    console.log(this.props.markers)
+    
     //const {rowFrom, rowTo} = getRealFromTo(this.props.visibleRowFirst, this.props.visibleRowLast, this.props.maxVisibleRows, this.props.markers.length);    
     const rowFrom=0
     const rowTo=100
-    console.log("rowTo="+rowTo)
-    console.log("rowTo="+rowFrom)
-    console.log(this.props.markers.filter((m, index) => index >= rowFrom && index <= rowTo))
+    
     const Markers = this.props.markers &&
       this.props.markers.filter((m, index) => index >= rowFrom && index <= rowTo)
       .map((marker, index) => (

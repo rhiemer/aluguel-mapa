@@ -1,9 +1,10 @@
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css'
-import './assets/styles/google/googleapis.css';
-import './assets/styles/sass/app.css';
 import 'react-select/dist/react-select.css';
-
+import './assets/styles/sass/app.css';
+import './assets/styles/google/googleapis.css';
+import './assets/styles/react-toolbox/theme.css';
+import 'fixed-data-table/dist/fixed-data-table.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -97,5 +98,4 @@ if (!window.Intl) {
     });
 } else {
   render(translationMessages);
-}
-
+}  

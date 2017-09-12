@@ -36,14 +36,12 @@ export default class TableAnuncios extends Component {
     this.columnDefs = columns;    
   }
 
-  _cellRenderer = (cellDataKey, rowData, rowIndex) => {
-    console.log(`_cellRenderer`)
+  _cellRenderer = (cellDataKey, rowData, rowIndex) => {    
     return cellRenderer(cellDataKey, rowData, rowIndex);
   }
 
-  _getRowObjectAt = (i) => {
-    console.log(`_getRowObjectAt ${this.props.markers}`)
-    return this.props.markers && this.props.markers.get(i);
+  _getRowObjectAt = (i) => {    
+    return this.props.markers && this.props.markers[i];
   }
 
   _getRowClassNameAt = (i, isHovered) => {
@@ -77,9 +75,7 @@ export default class TableAnuncios extends Component {
   }
 
   render() {    
-    const _rowsCount=((this.props.markers && this.props.markers.length) || K_MIN_DEFAULT_ROWS_SIZE)
-    console.log(`render ${_rowsCount}`)
-    
+    const _rowsCount=((this.props.markers && this.props.markers.length) || K_MIN_DEFAULT_ROWS_SIZE)        
     return (
       <IceTable
         data={this.props.markers}

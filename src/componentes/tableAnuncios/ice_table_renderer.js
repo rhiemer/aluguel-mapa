@@ -99,20 +99,19 @@ export function renderMiniHeader(resetFn) {
 function renderColumn0(cellDataKey, rowData /*, rowIndex*/) {
   return (
     <div className="ice-table__column0">
-      <div className={cx('ice-table__column0-number', 'ice-table__column0-number__color' + rowData.get('type'))}>{rowData.get('number')}</div>
+      <div className={cx('ice-table__column0-number', 'ice-table__column0-number__color' + rowData.type)}>{rowData.number}</div>
     </div>
   );
 }
 
-function renderColumn1(data /*, rowIndex*/) {
-  console.log(`renderColumn1=${JSON.stringify(data)}`)
+function renderColumn1(cellDataKey, rowData /*, rowIndex*/) {
   return (
     <div className="ice-table__column1">
       <div className="ice-table__column1-title">
-        {data.title}
+        {rowData.title}
       </div>
       <div className="ice-table__column1-address">
-        {data.address}
+        {rowData.address}
       </div>
     </div>
   );
@@ -122,7 +121,7 @@ function renderColumn2(cellDataKey, rowData /*, rowIndex*/) {
   // image load hack (just put in array with key eq to src (c) istarkov :-))
   return (
     <div className="ice-table__column2">
-      {[<img key={rowData.get('image')} src={rowData.get('image')} style={K_STYLE_IMAGE} />]}
+      {[<img key={rowData.image} src={rowData.image} style={K_STYLE_IMAGE} />]}
     </div>
   );
 }
@@ -137,8 +136,7 @@ export function getRowClassNameAt(i, isHovered, isFirstInvisibleRow) {
   return borderTopClass + ' ' + (i % 2 === 0 ? K_ROW_CLASS_NAME_EVEN : K_ROW_CLASS_NAME_ODD);
 }
 
-/*export function cellRenderer(cellDataKey, rowData, rowIndex) {
-  console.log("cellRenderer"+cellDataKey)
+export function cellRenderer(cellDataKey, rowData, rowIndex) {
   switch (cellDataKey) {
     case K_KEY_COLUMN_RANK:
       return renderColumn0(cellDataKey, rowData, rowIndex);
@@ -151,9 +149,5 @@ export function getRowClassNameAt(i, isHovered, isFirstInvisibleRow) {
         <div>{rowData ? 'Hello world!' : ''}</div>
       );
   }
-}*/
-
-export function cellRenderer(data) { 
-  return renderColumn1(data);  
 }
 

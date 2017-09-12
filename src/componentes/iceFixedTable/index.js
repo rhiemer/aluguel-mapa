@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import size from 'size-decorator';
 
+import size from './decoratedComponentSize';
 import debounceCore from './debounceCore.js';
 import invariant from './invariant.js';
 import PureRenderer from '../pureRenderer';

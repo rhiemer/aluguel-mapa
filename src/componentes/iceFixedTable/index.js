@@ -32,7 +32,7 @@ const styleMain = {
 };
 
 
-export default class IceFixedTable extends Component {
+class IceFixedTable extends Component {
 
   static propTypes = {
     className: PropTypes.string,
@@ -423,3 +423,6 @@ export default class IceFixedTable extends Component {
     );
   }
 }
+
+IceFixedTable = size(IceFixedTable);
+export default IceFixedTable

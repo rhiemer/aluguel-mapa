@@ -3,7 +3,19 @@ import {reduxForm} from 'redux-form/immutable';
 import {Field} from 'redux-form/immutable';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {
+    Grid,
+    Row,
+    Col,
+    Form,
+    FormControl,
+    FormGroup,
+    ControlLabel,
+    Panel,
+    Button
+} from 'react-bootstrap';
 
+import {NoSpaceRowGeoLocalizacao,ColMapa} from './styles';
 import {LISTAR_ANUNCIOS_MAPA} from '../constants';
 import {listarAnunciosMapaSelector} from './selectors';
 import {listarAnunciosMapa} from './actions';
@@ -27,32 +39,31 @@ class GeoLocalizacao extends React.PureComponent {
         zoom: 11
     };
 
-    render() {        
-        const {listarAnuncios,markers,getAnuncios,handleSubmit} = this.props;
+    render() {
+        const {listarAnuncios, markers, getAnuncios, handleSubmit} = this.props;
         return (
-
-            <form onSubmit={handleSubmit}>
-                <div>
-                <div>  
-                    <div
-                        style={{
-                        width: '100%',
-                        height: '400px'
-                    }}>
-                    <Field name="mapa.geoLocalizacao" {...this.props} component={MainMapBlock}/> 
-                    </div>
-                    <button type="submit">Listar Localidades</button>
-                    </div>   
-                    <Field name="tabela.geoLocalizacao" {...this.props} component={TableAnuncios}/>                
-                </div>
-            </form>            
+            <Form onSubmit={handleSubmit} horizontal>
+                <FormGroup controlId="formGeoLocalizacao">
+                    <Button type="submit" bsStyle="primary">Listar Localidades</Button>
+                    <Col sm={12}>
+                        <FormGroup controlId="formGeoLocalizacaoMapaLista" onSubmit={handleSubmit}>
+                            <NoSpaceRowGeoLocalizacao>
+                                <ColMapa sm={9}>
+                                    <Field name="mapa.geoLocalizacao" {...this.props} component={MainMapBlock}/>
+                                </ColMapa>
+                                <Col sm={3}>
+                                    <Field name="tabela.geoLocalizacao" {...this.props} component={TableAnuncios}/>
+                                </Col>
+                            </NoSpaceRowGeoLocalizacao>
+                        </FormGroup>
+                    </Col>
+                </FormGroup>
+            </Form>
         );
     }
 }
 
-const mapStateToProps = (state) => ({      
-    markers: listarAnunciosMapaSelector(state)
-});
+const mapStateToProps = (state) => ({markers: listarAnunciosMapaSelector(state)});
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: () => {

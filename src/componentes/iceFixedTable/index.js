@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
-import size from './decoratedComponentSize';
+import size from '../decoratedComponentSize';
 import debounceCore from './debounceCore.js';
 import invariant from './invariant.js';
 import PureRenderer from '../pureRenderer';
@@ -31,8 +31,8 @@ const styleMain = {
   overflow: 'hidden'
 };
 
-
-class IceFixedTable extends Component {
+@size()
+export default class IceFixedTable extends Component {
 
   static propTypes = {
     className: PropTypes.string,
@@ -175,9 +175,10 @@ class IceFixedTable extends Component {
     visibleRowLast = visibleRowLast - K_HEADER_FIELD_INDEX_DELTA;
 
     if (visibleRowFirst > visibleRowLast) {
-      //if (__DEV__) {
+      console.log(process.env.NODE_ENV)
+      if (process.env.NODE_ENV !== 'production') {
         invariant(visibleRowLast === -1, 'first row index is less than last row index and not eq -1');
-      //}
+      }
 
       this.rowYPositions[0].rowIndex = -1; // reset
       visibleRowFirst = visibleRowLast;
@@ -371,8 +372,10 @@ class IceFixedTable extends Component {
 
   render() {
     const miniHeaderStyle = Object.assign({height: this.props.miniHeaderHeight}, styleEmpty);
-    const _width=1000
-    const _height=2000
+    const _width=this.props.width
+    const _height=this.props.height
+    console.log(_width)
+    console.log(_height)
     return (      
       <div
         onMouseLeave={this._onMouseLeave}
@@ -423,6 +426,3 @@ class IceFixedTable extends Component {
     );
   }
 }
-
-IceFixedTable = size(IceFixedTable);
-export default IceFixedTable

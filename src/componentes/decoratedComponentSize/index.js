@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
-export default function size(component,defaultSize) {
+export default function size(defaultSize) {
   return DecoratedComponent => class SizeDecorator extends Component {
 
     static displayName = (DecoratedComponent.displayName || DecoratedComponent.name || 'Component');
 
     constructor(props, context) {
       super(props, context);
-      this.component = component;
+      this.component = null;
       this.state = {
         width: defaultSize && defaultSize.width,
         height: defaultSize && defaultSize.height
@@ -22,7 +23,7 @@ export default function size(component,defaultSize) {
 
     _update = () => {
       if (this.initialized_) {
-        const node = React.findDOMNode(this.component);
+        const node = ReactDOM.findDOMNode(this.component);
         if (this.state.width !== node.offsetWidth || this.state.height !== node.offsetHeight) {
           this.setState({
             width: node.offsetWidth,
@@ -44,7 +45,7 @@ export default function size(component,defaultSize) {
 
     render() {
       return (
-        <DecoratedComponent {...this.props} {...this.state} />
+        <DecoratedComponent ref={v => this.component = v} {...this.props} {...this.state} />
       );
     }
   };

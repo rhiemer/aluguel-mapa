@@ -11,7 +11,7 @@ export default class AppBarMapa extends React.PureComponent { // eslint-disable-
 
     render() {        
         return (
-            <AppBar title="Mapa de Aluguel" leftIcon="menu"/>
+            <AppBar title="Mapa de Aluguel" leftIcon="menu" fixed={true}/>
         )
     }
 }

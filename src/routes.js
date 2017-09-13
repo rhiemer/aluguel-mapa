@@ -9,6 +9,7 @@ const errorLoading = (err) => {
 };
 
 const loadModule = (cb) => (componentModule) => {
+  console.log(componentModule.default)
   cb(null, componentModule.default);
 };
 

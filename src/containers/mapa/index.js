@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import HeaderMapa from './HeaderMapa'
 import GeoLocalizacao from './GeoLocalizacao'
+import FiltroMapa from './HeaderMapa/FiltroMapa'
 
 export default class Mapa extends Component {
 
@@ -11,7 +12,10 @@ export default class Mapa extends Component {
                 <header>
                     <HeaderMapa/>                    
                 </header>
-                <div style={{width: '100%', height: '400px'}}>
+                <div>
+                    <FiltroMapa/>
+                </div>    
+                <div style={{paddingLeft:'31px'}}>
                    <GeoLocalizacao/>
                 </div>                
             </div>

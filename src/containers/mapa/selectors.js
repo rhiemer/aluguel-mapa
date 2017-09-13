@@ -1,17 +1,14 @@
 import {createSelector} from 'reselect';
 import { formValueSelector } from 'redux-form/immutable';
-import {
-  HEADER_FORM_MAPA,FIELD_FORM_HEADER_MAPA_LISTAR_LOCALIDADE_HEADER
-} from './constants';
+import { SELECTOR_GLOBAL_MAPA,         
+         SELECTOR_LOCALIDADE_FILTRO
+        } from './constants';
 
-const localidadeHeaderMapaFiltroFormSelector = (state) => formValueSelector(HEADER_FORM_MAPA)(state,FIELD_FORM_HEADER_MAPA_LISTAR_LOCALIDADE_HEADER);
-
-const localidadeHeaderMapSelector = createSelector(
-    localidadeHeaderMapaFiltroFormSelector,
-    (listaLocalidades) => listaLocalidades && listaLocalidades.toJS()
-  );
+const selectGlobalMapa = (state) => state.get(SELECTOR_GLOBAL_MAPA);
+const selectLocalidadeFiltro = (state) => state.getIn([SELECTOR_GLOBAL_MAPA,SELECTOR_LOCALIDADE_FILTRO]);
 
 export {
-    localidadeHeaderMapaFiltroFormSelector,
-    localidadeHeaderMapSelector
+    selectGlobalMapa,
+    selectLocalidadeFiltro
   };
+

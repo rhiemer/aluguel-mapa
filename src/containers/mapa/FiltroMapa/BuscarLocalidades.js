@@ -15,32 +15,33 @@ import {reduxForm} from 'redux-form/immutable';
 import {Field} from 'redux-form/immutable';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {HEADER_FORM_MAPA} from '../constants';
-import {localidadeHeaderMapSelector} from '../selectors';
-import {listarLocalidadeHeader} from '../actions';
+import {HEADER_FORM_MAPA} from './constants';
+import {localidadeHeaderMapSelector,alterarLocalidadeMapaFiltroSelector} from './selectors';
+import {listarLocalidadeHeader,alterarLocalidadeFiltro} from './actions';
 import BuscarLocalidadesAutoComplete from './BuscarLocalidadesAutoComplete'
 import {NoSpaceRowBuscarLocalidade} from './styles';
 
 class BuscarLocalidades extends Component {
 
     static propTypes = {
-        listaLocalidade: PropTypes.arrayOf(PropTypes.object),
-        listarLocalidade: PropTypes.func,
+        alterarLocalidadeFiltro: PropTypes.func,
+        localidadeFiltro: PropTypes.arrayOf(PropTypes.object),
         handleSubmit: PropTypes.func
     };
 
     constructor() {
         super();
-    }
+    }  
 
     render() {
-        const {handleSubmit, listarLocalidade, listaLocalidade} = this.props;
+        const {localidadeFiltro,alterarLocalidadeFiltro,handleSubmit} = this.props;
         return (
             <FormGroup controlId="formHorizontalEmail" onSubmit={handleSubmit} >
                 <NoSpaceRowBuscarLocalidade>
                     <Col sm={3}>
                         <Field
                             name="mapa.header.pesquisalocalidades"
+                            changeLocalidade={alterarLocalidadeFiltro}
                             {...this.props}
                             component={BuscarLocalidadesAutoComplete}/>
                     </Col>
@@ -53,7 +54,10 @@ class BuscarLocalidades extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({listaLocalidade: localidadeHeaderMapSelector(state)});
+const mapStateToProps = (state) => ({
+      localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state),
+      
+    });
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: () => {
@@ -62,7 +66,10 @@ const mapDispatchToProps = (dispatch) => ({
     },
     listarLocalidade: (filtro) => {
         dispatch(listarLocalidadeHeader(filtro));
-    }
+    },
+    alterarLocalidadeFiltro: (localidade) => {
+        dispatch(alterarLocalidadeFiltro(localidade));
+    },
 });
 
 BuscarLocalidades = reduxForm({ // eslint-disable-line no-class-assign

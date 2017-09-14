@@ -7,8 +7,7 @@ export default class HeaderMapa extends React.PureComponent { // eslint-disable-
     render() {
         return (
             <div>
-                <AppBarMapa/>
-                <FiltroMapa/>
+                <AppBarMapa/>                
             </div>
         );
     }

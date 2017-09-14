@@ -1,4 +1,5 @@
 export const MAPA_LISTAR_LOCALIDADE_HEADER = 'app/Mapa/ListarLocalidadesHeader';
-export const HEADER_FORM_MAPA = 'headerMapa';
-export const FIELD_FORM_HEADER_MAPA_LISTAR_LOCALIDADE_HEADER = 'listaPesquisaLocalidades';
+export const MAPA_ALTERAR_LOCALIDADE_FILTRO = 'app/Mapa/AlterarLocalidadeFiltro';
 export const LISTAR_ANUNCIOS_MAPA  = 'app/Mapa/ListarAnunciosMapa';
+export const SELECTOR_GLOBAL_MAPA='globalMapa'
+export const SELECTOR_LOCALIDADE_FILTRO='localidadeFiltro'

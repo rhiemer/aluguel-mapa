@@ -45,9 +45,8 @@ function calcMarkerTextStyle(scale, markerTextStyle) {
 
 export {K_SCALE_NORMAL};
 
-
-
-class MapMarker extends Component {
+@controllable(['hoverState', 'showBallonState'])
+export default class MapMarker extends Component {
   static propTypes = {
     $hover: PropTypes.bool,
     $dimensionKey: PropTypes.any,
@@ -228,8 +227,7 @@ class MapMarker extends Component {
 }
 
 
-MapMarker = controllable(MapMarker, ['hoverState', 'showBallonState']);
-export default MapMarker
+
 
 
 

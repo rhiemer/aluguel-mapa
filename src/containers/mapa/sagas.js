@@ -1,45 +1,25 @@
-import {toastr} from 'react-redux-toastr';
-import { put } from 'redux-saga/effects';
-import { arrayRemoveAll, change } from 'redux-form';
-import { fromJS } from 'immutable';
-import { cancel,take, takeLatest } from 'redux-saga/effects';
+import { cancel,take,takeLatest,fork,all,takeEvery } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
+
+import {listarLocalidadeHeaderSaga,alterarLocalidadeFiltroSaga} from './FiltroMapa/sagas'
+import {listarAnunciosMapaSaga,alterarLocalidadeFiltroSaga as alterarLocalidadeFiltroSagaGeoLocalizacao} from './GeoLocalizacao/sagas'
+
 import { MAPA_LISTAR_LOCALIDADE_HEADER,
-         HEADER_FORM_MAPA,
-         FIELD_FORM_HEADER_MAPA_LISTAR_LOCALIDADE_HEADER,
+         MAPA_ALTERAR_LOCALIDADE_FILTRO,         
          LISTAR_ANUNCIOS_MAPA
-        } from './constants';
-import {GEOLOCALIZACAO_FORM_MAPA,
-        FIELD_FORM_GEOLOCALIZACAO_MAPA} from '../mapa/GeoLocalizacao/constants';         
-import {listarLocalidadeHeader} from './logica';
-import {listarAnunciosMapa} from '../../logica/anuncios';
-
-function* listarLocalidadeHeaderSaga(data) {
-  try {
-      arrayRemoveAll(HEADER_FORM_MAPA,FIELD_FORM_HEADER_MAPA_LISTAR_LOCALIDADE_HEADER);
-      yield put(change(HEADER_FORM_MAPA,FIELD_FORM_HEADER_MAPA_LISTAR_LOCALIDADE_HEADER,fromJS(listarLocalidadeHeader(data.filtro))));
-  } catch (err) {
-      toastr.error('Erro', 'Erro ao listar as localidades do header do mapa.');
-  }
-}
-
-function* listarAnunciosMapaSaga(data) {
-  try {      
-      arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA,FIELD_FORM_GEOLOCALIZACAO_MAPA);
-      yield put(change(GEOLOCALIZACAO_FORM_MAPA,FIELD_FORM_GEOLOCALIZACAO_MAPA,fromJS(listarAnunciosMapa(data.latitude,data.longitude))));
-  } catch (err) {
-      toastr.error('Erro','Erro ao listar os anuncios do mapa.');
-  }
-}
-
-
-
+        } from './constants'
+        
 export function* defaultSaga() {
-  const listarLocalidadeHeaderWatcher = yield takeLatest(MAPA_LISTAR_LOCALIDADE_HEADER,listarLocalidadeHeaderSaga); 
-  const listarAnunciosMapa = yield takeLatest(LISTAR_ANUNCIOS_MAPA,listarAnunciosMapaSaga); 
+  const listarLocalidadeHeaderWatcher = yield takeLatest(MAPA_LISTAR_LOCALIDADE_HEADER,listarLocalidadeHeaderSaga);  
+  const listarAnunciosWatcher = yield takeLatest(LISTAR_ANUNCIOS_MAPA,listarAnunciosMapaSaga); 
+  const composeFilterListarAnuncioWatcher = yield all([   takeEvery(MAPA_ALTERAR_LOCALIDADE_FILTRO,alterarLocalidadeFiltroSaga),
+                                                          takeEvery(MAPA_ALTERAR_LOCALIDADE_FILTRO,alterarLocalidadeFiltroSagaGeoLocalizacao),
+                                                          takeEvery(MAPA_ALTERAR_LOCALIDADE_FILTRO,listarAnunciosMapaSaga),                                                        
+                                                      ]); 
   yield take(LOCATION_CHANGE);
   yield cancel(listarLocalidadeHeaderWatcher);
-  yield cancel(listarAnunciosMapa);  
+  yield cancel(listarAnunciosWatcher);
+  yield cancel(composeFilterListarAnuncioWatcher); 
   return;
 }
 

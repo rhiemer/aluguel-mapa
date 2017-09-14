@@ -18,8 +18,8 @@ const K_MARGIN_LEFT = 30;
 
 const K_HOVER_DISTANCE = 30;
 
-
-class MainMapBlock extends Component {
+@controllable(['center', 'zoom', 'markers'])
+export default class MainMapBlock extends Component {
   static propTypes = {
     onCenterChange: PropTypes.func, // @controllable generated fn
     onZoomChange: PropTypes.func, // @controllable generated fn
@@ -93,10 +93,7 @@ class MainMapBlock extends Component {
 
   render() {
     
-    //const {rowFrom, rowTo} = getRealFromTo(this.props.visibleRowFirst, this.props.visibleRowLast, this.props.maxVisibleRows, this.props.markers.length);    
-    const rowFrom=0
-    const rowTo=100
-    
+    const {rowFrom, rowTo} = getRealFromTo(this.props.visibleRowFirst, this.props.visibleRowLast, this.props.maxVisibleRows, this.props.markers.length);        
     const Markers = this.props.markers &&
       this.props.markers.filter((m, index) => index >= rowFrom && index <= rowTo)
       .map((marker, index) => (
@@ -133,8 +130,8 @@ class MainMapBlock extends Component {
   }
 }
 
-MainMapBlock = controllable(MainMapBlock,['center', 'zoom', 'markers']);
-export default MainMapBlock
+
+
 
 
 

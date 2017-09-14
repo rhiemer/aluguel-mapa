@@ -3,8 +3,8 @@ import controllable from 'react-controllables';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import IceFixedTable from '../iceFixedTable'
 
-
-class IceTable extends React.PureComponent {
+@controllable(['forceUpdateCounter', 'startRow', 'hoveredRowIndex'])
+export default class IceTable extends React.PureComponent {
 
   static propTypes = {
     // public
@@ -146,6 +146,3 @@ class IceTable extends React.PureComponent {
     );
   }
 }
-
-IceTable = controllable(IceTable, ['forceUpdateCounter', 'startRow', 'hoveredRowIndex']);
-export default IceTable

@@ -1,4 +1,4 @@
-import pesquisaLocalidadesHeader from '../../database/pesquisaLocalidadesHeader.json';
+import pesquisaLocalidadesHeader from '../database/pesquisaLocalidadesHeader.json';
 
 /**
  * Busca localidades numa api de localiade a partir de uma string como filtro

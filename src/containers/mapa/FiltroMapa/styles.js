@@ -7,8 +7,7 @@ text-align: center;
 
 export const NoSpaceRowBuscarLocalidade = styled(Row)`
 > div {
-  padding-right: 0;
-  padding-left: 32px;
+  padding-right: 0;  
   text-align: left;
 }
 `;

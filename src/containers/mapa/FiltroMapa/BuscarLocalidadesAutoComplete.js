@@ -2,7 +2,7 @@ import React from 'react'
 import Autocomplete from 'react-toolbox/lib/autocomplete';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import {listarLocalidadeHeader} from '../logica';
+import {listarLocalidadeHeader} from '../../../logica/localidades';
 
 export default class BuscarLocalidadesAutoComplete extends React.PureComponent {
 
@@ -13,22 +13,26 @@ export default class BuscarLocalidadesAutoComplete extends React.PureComponent {
     };
   }
 
-  static propTypes = {
-    listaLocalidade: PropTypes.arrayOf(PropTypes.object),
-    listarLocalidade: PropTypes.func
+  static propTypes = {    
+    changeLocalidade: PropTypes.func
   };
 
-  updateStorageType = (value) => {
-    this.setState({localidade:value});    
+  _onChange = (value) => {    
+    this.setState({localidade:value});
+    const {changeLocalidade} = this.props;
+    if (changeLocalidade)    
+    {
+      console.log(`_onChange=${value}`)
+      this.props.changeLocalidade(value)
+    }
   }
 
-  getTypesOptions = (value) => {
+  loadOptions = (value) => {
     return Promise.all(listarLocalidadeHeader(value))
       .then(res => {return {options:res,complete: true}});
   }
 
-  render() {
-    const {listaLocalidade, listarLocalidade, tituloLocalidade} = this.props;
+  render() {    
     return (<Select.Async
     name="buscarLocalidadesHeaderMapaAutoComplete"
     valueKey="id"
@@ -36,8 +40,8 @@ export default class BuscarLocalidadesAutoComplete extends React.PureComponent {
     matchPos="any"
     matchProp="any"
     value={this.state.localidade}
-    loadOptions={this.getTypesOptions}
-    onChange={this.updateStorageType}
+    loadOptions={this.loadOptions}
+    onChange={this._onChange}
   />)
   }
 }

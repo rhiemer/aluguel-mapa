@@ -26,8 +26,7 @@ export default function createRoutes(store) {
         getComponent(nextState, cb) {
           const importModules = Promise.all([
             import('./containers/mapa/reducer'),              
-            import('./containers/mapa/sagas'),
-            import('./containers/mapa/GeoLocalizacao/sagas'),
+            import('./containers/mapa/sagas'),            
             import('./containers/mapa'),
           ]);
 

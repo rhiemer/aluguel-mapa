@@ -16,8 +16,8 @@ import {
 } from 'react-bootstrap';
 
 import {NoSpaceRowGeoLocalizacao,ColMapa} from './styles';
-import {LISTAR_ANUNCIOS_MAPA} from '../constants';
-import {listarAnunciosMapaSelector} from './selectors';
+import {GEOLOCALIZACAO_FORM_MAPA} from './constants';
+import {listarAnunciosMapaSelector,alterarLocalidadeMapaFiltroSelector} from './selectors';
 import {listarAnunciosMapa} from './actions';
 import MainMapBlock from '../../../componentes/mainMapBlock'
 import TableAnuncios from '../../../componentes/tableAnuncios'
@@ -26,6 +26,7 @@ class GeoLocalizacao extends React.PureComponent {
 
     static propTypes = {
         markers: PropTypes.arrayOf(PropTypes.object),
+        localidadeFiltro: PropTypes.object,
         listarAnuncios: PropTypes.func,
         getAnuncios: PropTypes.func,
         handleSubmit: PropTypes.func
@@ -40,7 +41,8 @@ class GeoLocalizacao extends React.PureComponent {
     };
 
     render() {
-        const {listarAnuncios, markers, getAnuncios, handleSubmit} = this.props;
+        const {listarAnuncios, markers, getAnuncios,localidadeFiltro,handleSubmit} = this.props;
+        console.log(`renderMapa=${JSON.stringify(localidadeFiltro)}`);
         return (
             <Form onSubmit={handleSubmit} horizontal>
                 <FormGroup controlId="formGeoLocalizacao">
@@ -63,7 +65,10 @@ class GeoLocalizacao extends React.PureComponent {
     }
 }
 
-const mapStateToProps = (state) => ({markers: listarAnunciosMapaSelector(state)});
+const mapStateToProps = (state) => ({
+                                      markers: listarAnunciosMapaSelector(state),
+                                      localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state)
+                                    });
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: () => {
@@ -79,7 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 GeoLocalizacao = reduxForm({ // eslint-disable-line no-class-assign
-    form: LISTAR_ANUNCIOS_MAPA,
+    form: GEOLOCALIZACAO_FORM_MAPA,
     enableReinitialize: true
 })(GeoLocalizacao);
 

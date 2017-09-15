@@ -2,11 +2,11 @@ import {
   LISTAR_ANUNCIOS_MAPA
 } from '../constants';
 
-export const listarAnunciosMapa = (latitude,longitude) => {         
+export const listarAnunciosMapa = (lat,lng) => {         
     return (      
     {
       type: LISTAR_ANUNCIOS_MAPA,
-      latitude,
-      longitude,
+      lat,
+      lng,
     });
   };

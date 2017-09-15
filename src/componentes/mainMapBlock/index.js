@@ -91,8 +91,8 @@ export default class MainMapBlock extends Component {
 
   _distanceToMouse = customDistanceToMouse;
 
-  render() {
-    
+  render() {    
+    console.log(this.props)
     const {rowFrom, rowTo} = getRealFromTo(this.props.visibleRowFirst, this.props.visibleRowLast, this.props.maxVisibleRows, this.props.markers.length);        
     const Markers = this.props.markers &&
       this.props.markers.filter((m, index) => index >= rowFrom && index <= rowTo)

@@ -25,8 +25,7 @@ class BuscarLocalidades extends Component {
 
     static propTypes = {
         localidadeFiltro: PropTypes.object,
-        alterarLocalidadeFiltro: PropTypes.func,
-        handleSubmit: PropTypes.func
+        alterarLocalidadeFiltro: PropTypes.func
     };
 
     constructor() {
@@ -34,9 +33,9 @@ class BuscarLocalidades extends Component {
     }  
 
     render() {
-        const {localidadeFiltro,alterarLocalidadeFiltro,handleSubmit} = this.props;
+        const {alterarLocalidadeFiltro} = this.props;
         return (
-            <FormGroup controlId="formHorizontalEmail" onSubmit={handleSubmit} >
+            <FormGroup controlId="formHorizontalEmail">
                 <NoSpaceRowBuscarLocalidade>
                     <Col sm={3}>
                         <Field
@@ -44,10 +43,7 @@ class BuscarLocalidades extends Component {
                             changeLocalidade={alterarLocalidadeFiltro}
                             {...this.props}
                             component={BuscarLocalidadesAutoComplete}/>
-                    </Col>
-                    <Col>
-                        <Button type="submit" bsStyle="primary"><FontAwesome name="search"/></Button>
-                    </Col>
+                    </Col>                    
                 </NoSpaceRowBuscarLocalidade>
             </FormGroup>
         );
@@ -55,18 +51,15 @@ class BuscarLocalidades extends Component {
 }
 
 const mapStateToProps = (state) => ({
-      localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state),
-      
-    });
+      localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state),      
+});
 
-const mapDispatchToProps = (dispatch) => ({
-    onSubmit: () => {
-        const filtro = "General";
-        dispatch(listarLocalidadeHeader(filtro));
-    },
+const mapDispatchToProps = (dispatch) => ({    
     alterarLocalidadeFiltro: (localidade) => {
-        console.log(`alterarLocalidadeFiltro=${localidade}`)
-        dispatch(alterarLocalidadeFiltro(localidade));
+        if (localidade)        
+        {
+          dispatch(alterarLocalidadeFiltro(localidade));
+        }  
     },
 });
 

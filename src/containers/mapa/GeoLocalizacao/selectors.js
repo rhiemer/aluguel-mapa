@@ -1,6 +1,9 @@
 import {createSelector} from 'reselect';
 import { formValueSelector } from 'redux-form/immutable';
-import { GEOLOCALIZACAO_FORM_MAPA,FIELD_FORM_GEOLOCALIZACAO_MAPA,FIELD_ALTERAR_LOCALIDADE_FILTRO} from './constants';
+import { GEOLOCALIZACAO_FORM_MAPA,
+         FIELD_FORM_GEOLOCALIZACAO_MAPA,
+         FIELD_ALTERAR_LOCALIDADE_FILTRO,
+         FIELD_CENTER_MAPA} from './constants';
 
 const listarAnunciosMapaFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_FORM_GEOLOCALIZACAO_MAPA);
 const listarAnunciosMapaSelector = createSelector(
@@ -12,11 +15,19 @@ const alterarLocalidadeMapaFiltroFormSelector = (state) => formValueSelector(GEO
 const alterarLocalidadeMapaFiltroSelector = createSelector(
       alterarLocalidadeMapaFiltroFormSelector,
       (localidade) => localidade && localidade.toJS()
+);  
+
+const alterarCenterMapaFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_CENTER_MAPA);
+const alterarCenterMapaSelector = createSelector(
+      alterarCenterMapaFormSelector,
+      (center) => center && center.toJS()
 );   
 
 export {
      listarAnunciosMapaFormSelector,
      listarAnunciosMapaSelector,
      alterarLocalidadeMapaFiltroFormSelector,
-     alterarLocalidadeMapaFiltroSelector
+     alterarLocalidadeMapaFiltroSelector,
+     alterarCenterMapaFormSelector,
+     alterarCenterMapaSelector     
   };

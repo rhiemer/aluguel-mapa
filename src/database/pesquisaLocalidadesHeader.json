@@ -2,27 +2,48 @@
     "id":1,
     "titulo": "Rua General Severiano, 76",
     "complemento": "Botafogo, Rio de Janeiro - Brasil",
-    "coordenadas": {
-        "latitude": 10.00,
-        "longitude": 10.00
+    "mapaPosicao": {
+      "center":{  
+         "lat": -22.9528316,
+         "lng": -43.1791732
+       },
+       "zoom":17
     }    
 },
 {
     "id":2,
-    "titulo": "Rua Teixeira de Freitas, 70",
-    "complemento": "Lapa, Rio de Janeiro - Brasil",
-    "coordenadas": {
-        "latitude": 20.00,
-        "longitude": 20.00
+    "titulo": "Rua Teixeira de Freitas, 31",
+    "complemento": "Lapa, Rio de Janeiro - Brasil",   
+    "mapaPosicao": {
+      "center":{  
+         "lat": -22.9144465,
+         "lng": -43.1791707
+       },
+       "zoom":17
     }    
 },
 {
     "id":3,
     "titulo": "Rua Marquesa dos Santos, 27",
     "complemento": "Laranjeiras, Rio de Janeiro - Brasil",
-    "coordenadas": {
-        "latitude": 30.00,
-        "longitude": 30.00
+    "mapaPosicao": {
+      "center":{  
+          "lat": -22.930576,
+          "lng": -43.1834638
+       },
+       "zoom":17
+    }    
+},
+{
+    "id":3,
+    "titulo": "Russia",
+    "complemento": "Russia",
+    "mapaPosicao": {
+      "center":{  
+          "lat": 59.938043,
+          "lng": 30.337157
+       },
+       "zoom":11
     }    
 }
 ]

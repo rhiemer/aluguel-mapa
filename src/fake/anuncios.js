@@ -19,18 +19,16 @@ function imageRndUrl(width = 100, height = 75) {
 
 // something like normal distribution around 0.5
 function nLikeRnd() {
-  const K_N = 10;
+  const K_N = 10000;
   let sum = 0;
   for (let i = 0; i < K_N; ++i) {
     sum += faker.random.number({max: 1, precision: 0.0001});
   }
-
+  console.log(sum / K_N);
   return sum / K_N;
 }
 
-export default function genMarkersData(latVarM,lngVarM,count=CONT_DEFAULT,typeGetter=null,seedNumber=SEED_NUMER_DEFAULT,test=false) {  
-  
-  console.log(`latVarM=${latVarM} lngVarM=${lngVarM}`)
+export default function genMarkersData(latVarM,lngVarM,count=CONT_DEFAULT,typeGetter=null,seedNumber=SEED_NUMER_DEFAULT,test=false) {    
   
   seed(seedNumber);
   const K_P_COUNT = 10;
@@ -43,8 +41,8 @@ export default function genMarkersData(latVarM,lngVarM,count=CONT_DEFAULT,typeGe
     .Range(0, count)
     .map(i => new immutable.Map({
       id: 'uuid_' + i,
-      lat: K_PITER_LAT_LNG.lat + (latVarM || 1.5) * (nLikeRnd() - 0.5),
-      lng: K_PITER_LAT_LNG.lng + (lngVarM || 1.5) * (nLikeRnd() - 0.5),
+      lat: (latVarM || 1.5) + (nLikeRnd() - 0.5),
+      lng: (lngVarM || 1.5) + (nLikeRnd() - 0.5),
       title: faker.company.companyName().toUpperCase(),
       description: paragraphs[i % K_P_COUNT],
       address: faker.address.streetAddress(),

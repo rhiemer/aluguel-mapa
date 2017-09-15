@@ -41,8 +41,7 @@ class GeoLocalizacao extends React.PureComponent {
     };
 
     render() {
-        const {listarAnuncios, markers, getAnuncios,localidadeFiltro,handleSubmit} = this.props;
-        console.log(`renderMapa=${JSON.stringify(localidadeFiltro)}`);
+        const {listarAnuncios, markers, getAnuncios,localidadeFiltro,handleSubmit} = this.props;        
         return (
             <Form onSubmit={handleSubmit} horizontal>
                 <FormGroup controlId="formGeoLocalizacao">

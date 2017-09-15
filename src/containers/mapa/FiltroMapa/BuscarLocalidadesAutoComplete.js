@@ -21,8 +21,7 @@ export default class BuscarLocalidadesAutoComplete extends React.PureComponent {
     this.setState({localidade:value});
     const {changeLocalidade} = this.props;
     if (changeLocalidade)    
-    {
-      console.log(`_onChange=${value}`)
+    {      
       this.props.changeLocalidade(value)
     }
   }

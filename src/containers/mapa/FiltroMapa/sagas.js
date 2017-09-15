@@ -18,8 +18,7 @@ export function * listarLocalidadeHeaderSaga(data) {
 }
 
 export function * alterarLocalidadeFiltroSaga(data) {
-    try {
-        console.log(`alterarLocalidadeFiltroSaga1=${JSON.stringify(data.localidade)}`)
+    try {        
         arrayRemoveAll(HEADER_FORM_MAPA, FIELD_FORM_HEADER_MAPA_ALTERAR_LOCALIDADE_FILTRO);
         yield put(change(HEADER_FORM_MAPA, FIELD_FORM_HEADER_MAPA_ALTERAR_LOCALIDADE_FILTRO,fromJS(data.localidade)));
     } catch (err) {

@@ -15,8 +15,7 @@ export default class IceFixedTableHolder extends Component {
   }
 
   render() {
-    const {cellRenderer, ...other} = this.props;
-    console.log(JSON.stringify(this.props))    
+    const {cellRenderer, ...other} = this.props;        
     return (
       <Table
         {...other}

@@ -13,8 +13,7 @@ function imageRndUrl(width = 100, height = 75) {
   const categories = ['abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife', 'fashion', 'people', 'nature', 'sports', 'technics', 'transport'];
   const category = categories[faker.random.number({max: categories.length - 1})];
   const index = 1 + faker.random.number({max: 8});
-  const urlGeradoraImagem = `http://lorempixel.com/${width}/${height}/${category}/${index}/`
-  //console.log(urlGeradoraImagem)
+  const urlGeradoraImagem = `http://lorempixel.com/${width}/${height}/${category}/${index}/`  
   return urlGeradoraImagem;
 }
 
@@ -30,6 +29,9 @@ function nLikeRnd() {
 }
 
 export default function genMarkersData(latVarM,lngVarM,count=CONT_DEFAULT,typeGetter=null,seedNumber=SEED_NUMER_DEFAULT,test=false) {  
+  
+  console.log(`latVarM=${latVarM} lngVarM=${lngVarM}`)
+  
   seed(seedNumber);
   const K_P_COUNT = 10;
   const paragraphs = new immutable.Range(0, K_P_COUNT)

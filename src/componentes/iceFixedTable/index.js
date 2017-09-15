@@ -92,8 +92,6 @@ export default class IceFixedTable extends Component {
   }
 
   _getRowObjectAt = (i) => {
-    if (i === 0) console.log(`linha 0 ${JSON.stringify(this.props.getRowObjectAt(0))}`)
-    if (i === 0) return null;
     return this.props.getRowObjectAt(i - K_HEADER_FIELD_INDEX_DELTA);
   }
 
@@ -175,7 +173,7 @@ export default class IceFixedTable extends Component {
     visibleRowLast = visibleRowLast - K_HEADER_FIELD_INDEX_DELTA;
 
     if (visibleRowFirst > visibleRowLast) {
-      console.log(process.env.NODE_ENV)
+      
       if (process.env.NODE_ENV !== 'production') {
         invariant(visibleRowLast === -1, 'first row index is less than last row index and not eq -1');
       }

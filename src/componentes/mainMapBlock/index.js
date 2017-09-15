@@ -33,7 +33,8 @@ export default class MainMapBlock extends Component {
     visibleRowLast: PropTypes.number,
     maxVisibleRows: PropTypes.number,
     hoveredRowIndex: PropTypes.number,
-    openBallonIndex: PropTypes.number
+    openBallonIndex: PropTypes.number,
+    keyMapa:PropTypes.string
   }
 
   static defaultProps = {
@@ -91,8 +92,7 @@ export default class MainMapBlock extends Component {
 
   _distanceToMouse = customDistanceToMouse;
 
-  render() {    
-    console.log(this.props)
+  render() {      
     const {rowFrom, rowTo} = getRealFromTo(this.props.visibleRowFirst, this.props.visibleRowLast, this.props.maxVisibleRows, this.props.markers.length);        
     const Markers = this.props.markers &&
       this.props.markers.filter((m, index) => index >= rowFrom && index <= rowTo)
@@ -114,6 +114,7 @@ export default class MainMapBlock extends Component {
     return (
       <GoogleMap
         // apiKey={null}
+        key={this.props.keyMapa}
         center={this.props.center}
         zoom={this.props.zoom}
         onBoundsChange={this._onBoundsChange}

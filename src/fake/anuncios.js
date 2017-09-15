@@ -23,8 +23,7 @@ function nLikeRnd() {
   let sum = 0;
   for (let i = 0; i < K_N; ++i) {
     sum += faker.random.number({max: 1, precision: 0.0001});
-  }
-  console.log(sum / K_N);
+  }  
   return sum / K_N;
 }
 

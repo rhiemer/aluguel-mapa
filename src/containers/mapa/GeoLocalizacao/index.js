@@ -17,10 +17,14 @@ import {
 
 import {NoSpaceRowGeoLocalizacao,ColMapa} from './styles';
 import {GEOLOCALIZACAO_FORM_MAPA} from './constants';
-import {listarAnunciosMapaSelector,alterarLocalidadeMapaFiltroSelector,alterarCenterMapaSelector} from './selectors';
 import {listarAnunciosMapa} from './actions';
 import MainMapBlock from '../../../componentes/mainMapBlock'
 import TableAnuncios from '../../../componentes/tableAnuncios'
+import {listarAnunciosMapaSelector,
+        alterarLocalidadeMapaFiltroSelector,
+        alterarKeyMapaSelector,
+        alterarCenterMapaSelector,} from './selectors';
+
 
 class GeoLocalizacao extends React.PureComponent {
 
@@ -30,7 +34,8 @@ class GeoLocalizacao extends React.PureComponent {
         center:PropTypes.object,
         listarAnuncios: PropTypes.func,
         getAnuncios: PropTypes.func,
-        handleSubmit: PropTypes.func
+        handleSubmit: PropTypes.func,
+        keyMapa:PropTypes.string
     };
 
     static defaultProps = {
@@ -40,18 +45,17 @@ class GeoLocalizacao extends React.PureComponent {
                 lng: 30.337157
             },
             zoom:11
-         }
+         },
+         keyMapa:''
     };
 
-    render() {
-        const {handleSubmit} = this.props;
-        const propsMapa = Object.assign({},this.props,this.props.mapaPosicao);
+    render() {                
+        const propsMapa = Object.assign({},this.props,this.props.mapaPosicao);          
         return (
-            <Form onSubmit={handleSubmit} horizontal>
-                <FormGroup controlId="formGeoLocalizacao">
-                    <Button type="submit" bsStyle="primary">Listar Localidades</Button>
+            <Form horizontal>
+                <FormGroup controlId="formGeoLocalizacao">                    
                     <Col sm={12}>
-                        <FormGroup controlId="formGeoLocalizacaoMapaLista" onSubmit={handleSubmit}>
+                        <FormGroup controlId="formGeoLocalizacaoMapaLista">
                             <NoSpaceRowGeoLocalizacao>
                                 <ColMapa sm={9}>
                                     <Field name="mapa.geoLocalizacao" {...propsMapa} component={MainMapBlock}/>
@@ -71,17 +75,11 @@ class GeoLocalizacao extends React.PureComponent {
 const mapStateToProps = (state) => ({
                                       markers: listarAnunciosMapaSelector(state),
                                       localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state),
-                                      mapaPosicao:alterarCenterMapaSelector(state)
+                                      mapaPosicao:alterarCenterMapaSelector(state),
+                                      keyMapa:alterarKeyMapaSelector(state)
                                     });
 
-const mapDispatchToProps = (dispatch) => ({
-    onSubmit: () => {
-        const filtro = {
-            lat: 59.95,
-            lng: 30.33
-        };
-        dispatch(listarAnunciosMapa(filtro.lat,filtro.lng));
-    },
+const mapDispatchToProps = (dispatch) => ({   
     listarAnuncios: (lat, lng) => {
         dispatch(listarAnunciosMapa(lat, lng));
     }

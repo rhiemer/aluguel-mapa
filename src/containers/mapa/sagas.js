@@ -4,11 +4,13 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import {listarLocalidadeHeaderSaga,alterarLocalidadeFiltroSaga} from './FiltroMapa/sagas'
 import {listarAnunciosMapaSaga,
         alterarLocalidadeFiltroSaga as alterarLocalidadeFiltroSagaGeoLocalizacao,
-        alterarPosicaoMapaSaga} from './GeoLocalizacao/sagas'
+        alterarPosicaoMapaSaga,
+        alterarKeyMapaSaga} from './GeoLocalizacao/sagas'
 
 import { MAPA_LISTAR_LOCALIDADE_HEADER,
          MAPA_ALTERAR_LOCALIDADE_FILTRO,         
-         LISTAR_ANUNCIOS_MAPA
+         MAPA_REFRESH_LOCALIDADE_FILTRO,
+         LISTAR_ANUNCIOS_MAPA,         
         } from './constants'
         
 export function* defaultSaga() {
@@ -19,10 +21,17 @@ export function* defaultSaga() {
                                                           takeEvery(MAPA_ALTERAR_LOCALIDADE_FILTRO,listarAnunciosMapaSaga),
                                                           takeEvery(MAPA_ALTERAR_LOCALIDADE_FILTRO,alterarPosicaoMapaSaga)                                                                                                                  
                                                       ]); 
+  const composeRefreshLocalidadeFiltro = yield all([   takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarLocalidadeFiltroSaga),
+                                                       takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarLocalidadeFiltroSagaGeoLocalizacao),
+                                                       takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,listarAnunciosMapaSaga),
+                                                       takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarPosicaoMapaSaga), 
+                                                       takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarKeyMapaSaga),                                                                                                                 
+                                                      ]);                                                    
   yield take(LOCATION_CHANGE);
   yield cancel(listarLocalidadeHeaderWatcher);
   yield cancel(listarAnunciosWatcher);
   yield cancel(composeFilterListarAnuncioWatcher); 
+  yield cancel(composeRefreshLocalidadeFiltro)
   return;
 }
 

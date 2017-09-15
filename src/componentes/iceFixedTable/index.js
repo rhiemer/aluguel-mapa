@@ -372,8 +372,6 @@ export default class IceFixedTable extends Component {
     const miniHeaderStyle = Object.assign({height: this.props.miniHeaderHeight}, styleEmpty);
     const _width=this.props.width
     const _height=this.props.height
-    console.log(_width)
-    console.log(_height)
     return (      
       <div
         onMouseLeave={this._onMouseLeave}

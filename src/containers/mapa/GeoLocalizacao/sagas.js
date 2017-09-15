@@ -2,15 +2,18 @@ import {toastr} from 'react-redux-toastr';
 import { put } from 'redux-saga/effects';
 import { arrayRemoveAll, change } from 'redux-form';
 import { fromJS } from 'immutable';
+import {v4 as gerarUuid} from "node-uuid/uuid";
 
 import {listarAnunciosMapa} from '../../../logica/anuncios';
 import {GEOLOCALIZACAO_FORM_MAPA,
         FIELD_FORM_GEOLOCALIZACAO_MAPA,
         FIELD_ALTERAR_LOCALIDADE_FILTRO,
-        FIELD_CENTER_MAPA} from './constants';
+        FIELD_CENTER_MAPA,
+        FIELD_KEY_MAPA} from './constants';
+        
 
 export function* listarAnunciosMapaSaga(data) {  
-  const {lat,lng} = data.localidade?data.localidade.mapaPosicao.center:data;
+  const {lat,lng} = data.localidade?data.localidade.mapaPosicao.center:data;  
   try {    
       arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA,FIELD_FORM_GEOLOCALIZACAO_MAPA);
       yield put(change(GEOLOCALIZACAO_FORM_MAPA,FIELD_FORM_GEOLOCALIZACAO_MAPA,fromJS(listarAnunciosMapa(lat,lng))));
@@ -24,18 +27,30 @@ export function* alterarLocalidadeFiltroSaga(data) {
         arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_ALTERAR_LOCALIDADE_FILTRO);
         yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_ALTERAR_LOCALIDADE_FILTRO,fromJS(data.localidade)));
     } catch (err) {
+        console.error("Erro alterarLocalidadeFiltroSaga",err)
         toastr.error('Erro', 'Erro ao alterar a localidade do filtro.');
     }
 }
 
 export function* alterarPosicaoMapaSaga(data) {        
     try {                
-        const mapaPosicao = data.localidade && data.localidade.mapaPosicao;
-        console.log(`alterarPosicaoMapaSaga=${JSON.stringify(mapaPosicao)}`)
+        const mapaPosicao = data.localidade && data.localidade.mapaPosicao;        
         arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_CENTER_MAPA);
         yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_CENTER_MAPA,fromJS(mapaPosicao)));
     } catch (err) {
+        console.error("Erro alterarPosicaoMapaSaga",err)
         toastr.error('Erro', 'Erro ao alterar o centro do mapa.');
+    }
+}
+
+export function* alterarKeyMapaSaga(data) {        
+    try {               
+        const uuid = gerarUuid();               
+        arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_KEY_MAPA);                
+        yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_KEY_MAPA,fromJS(uuid)));
+    } catch (err) {
+        console.error("Erro alterarKeyMapaSaga",err)
+        toastr.error('Erro', 'Erro ao alterar chave do mapa para atualização do mesmo.');
     }
 }
 

@@ -17,7 +17,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {HEADER_FORM_MAPA} from './constants';
 import {localidadeHeaderMapSelector,alterarLocalidadeMapaFiltroSelector} from './selectors';
-import {listarLocalidadeHeader,alterarLocalidadeFiltro} from './actions';
+import {listarLocalidadeHeader,alterarLocalidadeFiltro,refreshLocalidadeFiltro} from './actions';
 import BuscarLocalidadesAutoComplete from './BuscarLocalidadesAutoComplete'
 import {NoSpaceRowBuscarLocalidade} from './styles';
 
@@ -25,41 +25,53 @@ class BuscarLocalidades extends Component {
 
     static propTypes = {
         localidadeFiltro: PropTypes.object,
-        alterarLocalidadeFiltro: PropTypes.func
+        alterarLocalidadeFiltro: PropTypes.func,
+        handleSubmit: PropTypes.func
     };
 
     constructor() {
         super();
     }  
 
-    render() {
-        const {alterarLocalidadeFiltro} = this.props;
+    render() {                
+        const {alterarLocalidadeFiltro,handleSubmit} = this.props;
         return (
-            <FormGroup controlId="formHorizontalEmail">
-                <NoSpaceRowBuscarLocalidade>
-                    <Col sm={3}>
-                        <Field
-                            name="mapa.header.pesquisalocalidades"
-                            changeLocalidade={alterarLocalidadeFiltro}
-                            {...this.props}
-                            component={BuscarLocalidadesAutoComplete}/>
-                    </Col>                    
-                </NoSpaceRowBuscarLocalidade>
-            </FormGroup>
+            <form onSubmit={handleSubmit}>
+                <FormGroup controlId="formHorizontalEmail">
+                    <NoSpaceRowBuscarLocalidade>
+                        <Col sm={3}>
+                            <Field
+                                name="mapa.header.pesquisalocalidades"
+                                changeLocalidade={alterarLocalidadeFiltro}
+                                {...this.props}
+                                component={BuscarLocalidadesAutoComplete}/>
+                        </Col>
+                        <Col>
+                            <Button type="submit" bsStyle="primary"><FontAwesome name="search"/></Button>
+                        </Col>                    
+                    </NoSpaceRowBuscarLocalidade>
+                </FormGroup>
+            </form>
         );
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({    
       localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state),      
 });
 
-const mapDispatchToProps = (dispatch) => ({    
+const mapDispatchToProps = (dispatch,ownProps) => ({
+     onSubmit: (values,dspatch, props) => {                  
+         if (props.localidadeFiltro)        
+         {
+           dispatch(refreshLocalidadeFiltro(props.localidadeFiltro));
+         }  
+    },     
     alterarLocalidadeFiltro: (localidade) => {
         if (localidade)        
         {
           dispatch(alterarLocalidadeFiltro(localidade));
-        }  
+        }
     },
 });
 

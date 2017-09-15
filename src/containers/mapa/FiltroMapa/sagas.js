@@ -25,3 +25,5 @@ export function * alterarLocalidadeFiltroSaga(data) {
         toastr.error('Erro', 'Erro ao alterar a localidade do filtro.');
     }
 }
+
+

@@ -9,7 +9,8 @@ import {GEOLOCALIZACAO_FORM_MAPA,
         FIELD_FORM_GEOLOCALIZACAO_MAPA,
         FIELD_ALTERAR_LOCALIDADE_FILTRO,
         FIELD_CENTER_MAPA,
-        FIELD_KEY_MAPA} from './constants';
+        FIELD_KEY_MAPA,
+        FIELD_SHOW_BALLON_MAPA} from './constants';
         
 
 export function* listarAnunciosMapaSaga(data) {  
@@ -51,6 +52,16 @@ export function* alterarKeyMapaSaga(data) {
     } catch (err) {
         console.error("Erro alterarKeyMapaSaga",err)
         toastr.error('Erro', 'Erro ao alterar chave do mapa para atualização do mesmo.');
+    }
+}
+
+export function* showBallonMapaSaga(data) {       
+    try {              
+        arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_SHOW_BALLON_MAPA);                
+        yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_SHOW_BALLON_MAPA,fromJS(data.openBalloonIndex)));
+    } catch (err) {
+        console.error("Erro showBallonMapa",err)
+        toastr.error('Erro', 'Erro ao indice do balão aberto.');
     }
 }
 

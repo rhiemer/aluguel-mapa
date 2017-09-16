@@ -17,13 +17,14 @@ import {
 
 import {NoSpaceRowGeoLocalizacao,ColMapa} from './styles';
 import {GEOLOCALIZACAO_FORM_MAPA} from './constants';
-import {listarAnunciosMapa} from './actions';
+import {listarAnunciosMapa,showBallonMapa} from './actions';
 import MainMapBlock from '../../../componentes/mainMapBlock'
 import TableAnuncios from '../../../componentes/tableAnuncios'
 import {listarAnunciosMapaSelector,
         alterarLocalidadeMapaFiltroSelector,
         alterarKeyMapaSelector,
-        alterarCenterMapaSelector,} from './selectors';
+        alterarCenterMapaSelector,
+        showBallonMapaSelector} from './selectors';
 
 
 class GeoLocalizacao extends React.PureComponent {
@@ -76,13 +77,20 @@ const mapStateToProps = (state) => ({
                                       markers: listarAnunciosMapaSelector(state),
                                       localidadeFiltro: alterarLocalidadeMapaFiltroSelector(state),
                                       mapaPosicao:alterarCenterMapaSelector(state),
-                                      keyMapa:alterarKeyMapaSelector(state)
+                                      keyMapa:alterarKeyMapaSelector(state),
+                                      openBallonIndex:showBallonMapaSelector(state),
                                     });
 
 const mapDispatchToProps = (dispatch) => ({   
     listarAnuncios: (lat, lng) => {
         dispatch(listarAnunciosMapa(lat, lng));
-    }
+    },
+    onChildClick:(openBalloonIndex)=> {
+        dispatch(showBallonMapa(openBalloonIndex));
+    },
+    onCloseClick:(openBalloonIndex)=> {
+        dispatch(showBallonMapa(openBalloonIndex));
+    } 
 });
 
 GeoLocalizacao = reduxForm({ // eslint-disable-line no-class-assign

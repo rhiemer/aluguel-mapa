@@ -62,10 +62,10 @@ export default class MainMapBlock extends Component {
     }
   }
 
-  _onChildClick = (key, childProps) => {
+  _onChildClick = (key, childProps) => {    
     const markerId = childProps.marker.id;
     const index = this.props.markers.findIndex(m => m.id === markerId);
-    if (this.props.onChildClick) {
+    if (this.props.onChildClick) {      
       this.props.onChildClick(index);
     }
   }
@@ -85,7 +85,9 @@ export default class MainMapBlock extends Component {
   }
 
   _onBalloonCloseClick = () => {
+    console.log('_onBalloonCloseClick1')
     if (this.props.onChildClick) {
+      console.log('_onBalloonCloseClick2')
       this.props.onChildClick(-1);
     }
   }
@@ -93,6 +95,7 @@ export default class MainMapBlock extends Component {
   _distanceToMouse = customDistanceToMouse;
 
   render() {      
+    
     const {rowFrom, rowTo} = getRealFromTo(this.props.visibleRowFirst, this.props.visibleRowLast, this.props.maxVisibleRows, this.props.markers.length);        
     const Markers = this.props.markers &&
       this.props.markers.filter((m, index) => index >= rowFrom && index <= rowTo)

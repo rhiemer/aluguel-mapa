@@ -1,5 +1,6 @@
 import {
-  LISTAR_ANUNCIOS_MAPA
+  LISTAR_ANUNCIOS_MAPA,
+  SHOW_BALLON_MAPA
 } from '../constants';
 
 export const listarAnunciosMapa = (lat,lng) => {         
@@ -10,3 +11,11 @@ export const listarAnunciosMapa = (lat,lng) => {
       lng,
     });
   };
+  
+  export const showBallonMapa = (openBalloonIndex) => {         
+    return (      
+    {
+      type: SHOW_BALLON_MAPA,
+      openBalloonIndex,
+    });
+  };  

@@ -6,6 +6,8 @@ import React, {PropTypes, Component} from 'react';
 import cx from 'classnames';
 import controllable from 'react-controllables';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import FontAwesome from 'react-fontawesome';
+
 import {getHintBottomOffsetClass, getHintBaloonVerticalPosClass, getHintBaloonHorizontalPosStyle} from '../balloon';
 import {getMarkerHolderStyle, getMarkerStyle, getMarkerTextStyle} from './styles';
 
@@ -92,26 +94,28 @@ export default class MapMarker extends Component {
     this.alive = true;
   }
 
-  _onShowBallonStateChange = (...args) => {
+  _onShowBallonStateChange = (...args) => {    
     if (!this.alive) return;
     this.props.onShowBallonStateChange(...args);
   }
 
-  _onHoverStateChange = (...args) => {
+  _onHoverStateChange = (...args) => {    
     if (!this.alive) return;
     this.props.onHoverStateChange(...args);
   }
 
-  _onMouseEnterContent = (/*e*/) => {
+  _onMouseEnterContent = (/*e*/) => {    
     this.props.$onMouseAllow(false); // disable mouse move hovers
   }
 
-  _onMouseLeaveContent = (/*e*/) => {
+  _onMouseLeaveContent = (/*e*/) => {    
     this.props.$onMouseAllow(true); // enable mouse move hovers
   }
 
   _onCloseClick = () => {
+    console.log('_onCloseClick1');    
     if (this.props.onCloseClick) {
+      console.log('_onCloseClick2');    
       this.props.onCloseClick();
     }
   }
@@ -126,6 +130,7 @@ export default class MapMarker extends Component {
   // no optimizations at all
   render() {
     // TODO add http://schema.org/docs/gs.html
+    
     let scale = this.props.$hover || this.props.showBallon ? K_SCALE_HOVER : this.props.scale;
     scale = this.props.hoveredAtTable ? K_SCALE_TABLE_HOVER : scale;
 
@@ -161,7 +166,9 @@ export default class MapMarker extends Component {
     } : null;
 
     const styleMarkerMarker = calcMarkerMarkerStyle(scale, zIndexStyle, markerStyle, imageStyle);
-
+    
+    console.log(this.props.showBallon)
+    
     // css hints library https://github.com/istarkov/html-hint
     return (
       <div
@@ -184,13 +191,11 @@ export default class MapMarker extends Component {
         </div>
         <div
           style={hintBaloonHorizontalPosStyle}
-          className={cx('hint__content map-marker-hint', this.props.showBallon ? '' : 'noevents')}
+          className={cx('hint__content map-marker-hint', this.props.showBallon ? '' : 'noevents')}          
           onMouseEnter={this._onMouseEnterContent}
           onMouseLeave={this._onMouseLeaveContent}>
-          <div
-            onClick={this._onCloseClick}
-            className={cx('map-marker-hint__close-button', this.props.showBallon ? 'map-marker-hint__close-button--visible' : '')}>
-            close
+          <div className={cx('map-marker-hint__close-button', this.props.showBallon ? 'map-marker-hint__close-button--visible' : '')}>
+               <FontAwesome name="search" onClick={this._onCloseClick}/>
           </div>
 
           <div className="map-marker-hint__title">

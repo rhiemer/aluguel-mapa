@@ -4,7 +4,8 @@ import { GEOLOCALIZACAO_FORM_MAPA,
          FIELD_FORM_GEOLOCALIZACAO_MAPA,
          FIELD_ALTERAR_LOCALIDADE_FILTRO,
          FIELD_CENTER_MAPA,
-         FIELD_KEY_MAPA} from './constants';
+         FIELD_KEY_MAPA,
+         FIELD_SHOW_BALLON_MAPA} from './constants';
 
 const listarAnunciosMapaFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_FORM_GEOLOCALIZACAO_MAPA);
 const listarAnunciosMapaSelector = createSelector(
@@ -28,7 +29,13 @@ const alterarKeyMapaFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_F
 const alterarKeyMapaSelector = createSelector(
       alterarKeyMapaFormSelector,
       (key) => key
-);   
+);
+
+const showBallonMapaFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_SHOW_BALLON_MAPA);
+const showBallonMapaSelector = createSelector(
+      showBallonMapaFormSelector,
+      (openBalloonIndex) => openBalloonIndex
+); 
 
 export {
      listarAnunciosMapaFormSelector,
@@ -38,5 +45,7 @@ export {
      alterarCenterMapaFormSelector,
      alterarCenterMapaSelector,
      alterarKeyMapaFormSelector,
-     alterarKeyMapaSelector    
+     alterarKeyMapaSelector,
+     showBallonMapaFormSelector,
+     showBallonMapaSelector    
   };

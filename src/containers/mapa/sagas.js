@@ -5,12 +5,14 @@ import {listarLocalidadeHeaderSaga,alterarLocalidadeFiltroSaga} from './FiltroMa
 import {listarAnunciosMapaSaga,
         alterarLocalidadeFiltroSaga as alterarLocalidadeFiltroSagaGeoLocalizacao,
         alterarPosicaoMapaSaga,
-        alterarKeyMapaSaga} from './GeoLocalizacao/sagas'
+        alterarKeyMapaSaga,
+        showBallonMapaSaga} from './GeoLocalizacao/sagas'
 
 import { MAPA_LISTAR_LOCALIDADE_HEADER,
          MAPA_ALTERAR_LOCALIDADE_FILTRO,         
          MAPA_REFRESH_LOCALIDADE_FILTRO,
-         LISTAR_ANUNCIOS_MAPA,         
+         LISTAR_ANUNCIOS_MAPA,  
+         SHOW_BALLON_MAPA       
         } from './constants'
         
 export function* defaultSaga() {
@@ -26,12 +28,14 @@ export function* defaultSaga() {
                                                        takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,listarAnunciosMapaSaga),
                                                        takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarPosicaoMapaSaga), 
                                                        takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarKeyMapaSaga),                                                                                                                 
-                                                      ]);                                                    
+                                                      ]);  
+  const showBallonMapaWatcher =  yield takeLatest(SHOW_BALLON_MAPA,showBallonMapaSaga);                                                                                                     
   yield take(LOCATION_CHANGE);
   yield cancel(listarLocalidadeHeaderWatcher);
   yield cancel(listarAnunciosWatcher);
   yield cancel(composeFilterListarAnuncioWatcher); 
   yield cancel(composeRefreshLocalidadeFiltro)
+  yield cancel(showBallonMapaWatcher)
   return;
 }
 

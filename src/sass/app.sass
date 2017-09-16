@@ -3,6 +3,9 @@
 
 @import './node_modules/html-hint/html-hint'
 @import './node_modules/material-ui-sass/material-ui/scaffolding'
+$button-height: 30px //$json-button-height //
+$raised-button-text-color: $primary-1-color
+$flat-button-text-color: $primary-1-color
 @import './node_modules/material-ui-sass/material-ui/components'
 @import './node_modules/material-ui-sass/material-ui/html'
 
@@ -10,11 +13,18 @@ $max-width: 90em
 @import './node_modules/bourbon/app/assets/stylesheets/bourbon'
 $gutter: modular-scale(1, 0.2em, $golden)
 @import './node_modules/bourbon-neat/app/assets/stylesheets/neat'
+
 $mobile: new-breakpoint(max-width 770px 6)
 
 @import 'mapa/layout'
 @import 'mapa/base'
+
+@import 'header/header'
 @import 'markers/map_marker.sass'
+@import 'ice_table/ice_table_resets.sass'
+@import 'ice_table/ice_table.sass'
+@import 'ice_table/ice_table_headers.sass'
+@import 'footer/footer'
 
 .css-load-display
   visibility: visible

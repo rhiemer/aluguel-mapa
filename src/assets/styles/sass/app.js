@@ -1395,1400 +1395,6 @@ export default StyleSheet.create({
     'MozTransform': 'translateX(8px)',
     'transform': 'translateX(8px)'
   },
-  // -------------------------------------*	HINT.css - A CSS tooltip library
-\*-------------------------------------
-  // *
- * HINT.css is a tooltip library made in pure CSS.
- *
- * Source: https://github.com/chinchang/hint.css
- * Demo: http://kushagragour.in/lab/hint/
- *
- * Release under The MIT License
- *
-  // *
- * source: hint-core.scss
- *
- * Defines the basic styling for the tooltip.
- * Each tooltip is made of 2 parts:
- * 	1) body (:after)
- * 	2) arrow (:before)
- *
- * Classes added:
- * 	1) hint
-  '[data-hint]': {
-    'position': 'relative',
-    'display': 'inline-block',
-    // *
-	 * tooltip arrow
-    // *
-	 * tooltip body
-  },
-  '[data-hint]:before': {
-    'position': 'absolute',
-    'WebkitTransform': 'translate3d(0, 0, 0)',
-    'MozTransform': 'translate3d(0, 0, 0)',
-    'transform': 'translate3d(0, 0, 0)',
-    'visibility': 'hidden',
-    'opacity': '0',
-    'zIndex': '1000000',
-    'pointerEvents': 'none',
-    'WebkitTransition': '0.3s ease',
-    'MozTransition': '0.3s ease',
-    'transition': '0.3s ease',
-    'WebkitTransitionDelay': '0ms',
-    'MozTransitionDelay': '0ms',
-    'transitionDelay': '0ms'
-  },
-  '[data-hint]:after': {
-    'position': 'absolute',
-    'WebkitTransform': 'translate3d(0, 0, 0)',
-    'MozTransform': 'translate3d(0, 0, 0)',
-    'transform': 'translate3d(0, 0, 0)',
-    'visibility': 'hidden',
-    'opacity': '0',
-    'zIndex': '1000000',
-    'pointerEvents': 'none',
-    'WebkitTransition': '0.3s ease',
-    'MozTransition': '0.3s ease',
-    'transition': '0.3s ease',
-    'WebkitTransitionDelay': '0ms',
-    'MozTransitionDelay': '0ms',
-    'transitionDelay': '0ms'
-  },
-  '[data-hint]:hover:before': {
-    'visibility': 'visible',
-    'opacity': '1'
-  },
-  '[data-hint]:hover:after': {
-    'visibility': 'visible',
-    'opacity': '1'
-  },
-  '[data-hint]:hover:before': {
-    'WebkitTransitionDelay': '100ms',
-    'MozTransitionDelay': '100ms',
-    'transitionDelay': '100ms'
-  },
-  '[data-hint]:hover:after': {
-    'WebkitTransitionDelay': '100ms',
-    'MozTransitionDelay': '100ms',
-    'transitionDelay': '100ms'
-  },
-  '[data-hint]:before': {
-    'content': '''',
-    'position': 'absolute',
-    'background': 'transparent',
-    'border': [{ 'unit': 'px', 'value': 6 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': 'transparent' }],
-    'zIndex': '1000001'
-  },
-  '[data-hint]:after': {
-    'content': 'attr(data-hint)',
-    'background': '#383838',
-    'color': 'white',
-    'padding': [{ 'unit': 'px', 'value': 8 }, { 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 8 }, { 'unit': 'px', 'value': 10 }],
-    'fontSize': [{ 'unit': 'px', 'value': 12 }],
-    'fontFamily': '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    'lineHeight': [{ 'unit': 'px', 'value': 12 }],
-    'whiteSpace': 'nowrap'
-  },
-  '[data-hint='']:before': {
-    'display': 'none !important'
-  },
-  '[data-hint='']:after': {
-    'display': 'none !important'
-  },
-  // *
- * source: hint-position.scss
- *
- * Defines the positoning logic for the tooltips.
- *
- * Classes added:
- * 	1) hint--top
- * 	2) hint--bottom
- * 	3) hint--left
- * 	4) hint--right
-  // *
- * set default color for tooltip arrows
-  'hint--top-left:before': {
-    'borderTopColor': '#383838'
-  },
-  'hint--top-right:before': {
-    'borderTopColor': '#383838'
-  },
-  'hint--top:before': {
-    'borderTopColor': '#383838'
-  },
-  'hint--bottom-left:before': {
-    'borderBottomColor': '#383838'
-  },
-  'hint--bottom-right:before': {
-    'borderBottomColor': '#383838'
-  },
-  'hint--bottom:before': {
-    'borderBottomColor': '#383838'
-  },
-  'hint--left:before': {
-    'borderLeftColor': '#383838'
-  },
-  'hint--right:before': {
-    'borderRightColor': '#383838'
-  },
-  // *
- * top tooltip
-  'hint--top:before': {
-    'marginBottom': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--top:before': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top:after': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top:after': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--top:before': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--top:hover:after': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--top:hover:before': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--top:focus:after': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--top:focus:before': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  // *
- * bottom tooltip
-  'hint--bottom:before': {
-    'marginTop': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--bottom:before': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom:after': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom:after': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--bottom:before': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--bottom:hover:after': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--bottom:hover:before': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--bottom:focus:after': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--bottom:focus:before': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  // *
- * right tooltip
-  'hint--right:before': {
-    'marginLeft': [{ 'unit': 'px', 'value': -12 }],
-    'marginBottom': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--right:after': {
-    'marginBottom': [{ 'unit': 'px', 'value': -14 }]
-  },
-  'hint--right:before': {
-    'left': [{ 'unit': '%H', 'value': 1 }],
-    'bottom': [{ 'unit': '%V', 'value': 0.5 }]
-  },
-  'hint--right:after': {
-    'left': [{ 'unit': '%H', 'value': 1 }],
-    'bottom': [{ 'unit': '%V', 'value': 0.5 }]
-  },
-  'hint--right:hover:after': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  'hint--right:hover:before': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  'hint--right:focus:after': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  'hint--right:focus:before': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  // *
- * left tooltip
-  'hint--left:before': {
-    'marginRight': [{ 'unit': 'px', 'value': -12 }],
-    'marginBottom': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--left:after': {
-    'marginBottom': [{ 'unit': 'px', 'value': -14 }]
-  },
-  'hint--left:before': {
-    'right': [{ 'unit': '%H', 'value': 1 }],
-    'bottom': [{ 'unit': '%V', 'value': 0.5 }]
-  },
-  'hint--left:after': {
-    'right': [{ 'unit': '%H', 'value': 1 }],
-    'bottom': [{ 'unit': '%V', 'value': 0.5 }]
-  },
-  'hint--left:hover:after': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--left:hover:before': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--left:focus:after': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--left:focus:before': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  // *
- * top-left tooltip
-  'hint--top-left:before': {
-    'marginBottom': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--top-left:before': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top-left:after': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top-left:after': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--top-left:before': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--top-left:after': {
-    'marginLeft': [{ 'unit': 'px', 'value': 6 }]
-  },
-  'hint--top-left:hover:after': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--top-left:hover:before': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--top-left:focus:after': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--top-left:focus:before': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  // *
- * top-right tooltip
-  'hint--top-right:before': {
-    'marginBottom': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--top-right:before': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top-right:after': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top-right:after': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--top-right:before': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--top-right:after': {
-    'marginLeft': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--top-right:hover:after': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--top-right:hover:before': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--top-right:focus:after': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--top-right:focus:before': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  // *
- * bottom-left tooltip
-  'hint--bottom-left:before': {
-    'marginTop': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--bottom-left:before': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom-left:after': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom-left:after': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--bottom-left:before': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--bottom-left:after': {
-    'marginLeft': [{ 'unit': 'px', 'value': 6 }]
-  },
-  'hint--bottom-left:hover:after': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--bottom-left:hover:before': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--bottom-left:focus:after': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--bottom-left:focus:before': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  // *
- * bottom-right tooltip
-  'hint--bottom-right:before': {
-    'marginTop': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--bottom-right:before': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom-right:after': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom-right:after': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--bottom-right:before': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--bottom-right:after': {
-    'marginLeft': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--bottom-right:hover:after': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--bottom-right:hover:before': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--bottom-right:focus:after': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--bottom-right:focus:before': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  // *
- * source: hint-sizes.scss
- *
- * Defines width restricted tooltips that can span
- * across multiple lines.
- *
- * Classes added:
- * 	1) hint--small
- * 	2) hint--medium
- * 	3) hint--large
- *
-  'hint--small:after': {
-    'whiteSpace': 'normal',
-    'lineHeight': [{ 'unit': 'em', 'value': 1.4 }]
-  },
-  'hint--medium:after': {
-    'whiteSpace': 'normal',
-    'lineHeight': [{ 'unit': 'em', 'value': 1.4 }]
-  },
-  'hint--large:after': {
-    'whiteSpace': 'normal',
-    'lineHeight': [{ 'unit': 'em', 'value': 1.4 }]
-  },
-  'hint--small:after': {
-    'width': [{ 'unit': 'px', 'value': 80 }]
-  },
-  'hint--medium:after': {
-    'width': [{ 'unit': 'px', 'value': 150 }]
-  },
-  'hint--large:after': {
-    'width': [{ 'unit': 'px', 'value': 300 }]
-  },
-  // *
- * source: hint-theme.scss
- *
- * Defines basic theme for tooltips.
- *
-  '[data-hint]': {
-    // *
-	 * tooltip body
-  },
-  '[data-hint]:after': {
-    'textShadow': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': -1 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': 'black' }],
-    'boxShadow': [{ 'unit': 'px', 'value': 4 }, { 'unit': 'px', 'value': 4 }, { 'unit': 'px', 'value': 8 }, { 'unit': 'string', 'value': 'rgba(0, 0, 0, 0.3)' }]
-  },
-  // *
- * source: hint-color-types.scss
- *
- * Contains tooltips of various types based on color differences.
- *
- * Classes added:
- * 	1) hint--error
- * 	2) hint--warning
- * 	3) hint--info
- * 	4) hint--success
- *
-  // *
- * Error
-  'hint--error:after': {
-    'backgroundColor': '#b34e4d',
-    'textShadow': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': -1 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': '#592726' }]
-  },
-  'hint--errorhint--top-left:before': {
-    'borderTopColor': '#b34e4d'
-  },
-  'hint--errorhint--top-right:before': {
-    'borderTopColor': '#b34e4d'
-  },
-  'hint--errorhint--top:before': {
-    'borderTopColor': '#b34e4d'
-  },
-  'hint--errorhint--bottom-left:before': {
-    'borderBottomColor': '#b34e4d'
-  },
-  'hint--errorhint--bottom-right:before': {
-    'borderBottomColor': '#b34e4d'
-  },
-  'hint--errorhint--bottom:before': {
-    'borderBottomColor': '#b34e4d'
-  },
-  'hint--errorhint--left:before': {
-    'borderLeftColor': '#b34e4d'
-  },
-  'hint--errorhint--right:before': {
-    'borderRightColor': '#b34e4d'
-  },
-  // *
- * Warning
-  'hint--warning:after': {
-    'backgroundColor': '#c09854',
-    'textShadow': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': -1 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': '#6c5328' }]
-  },
-  'hint--warninghint--top-left:before': {
-    'borderTopColor': '#c09854'
-  },
-  'hint--warninghint--top-right:before': {
-    'borderTopColor': '#c09854'
-  },
-  'hint--warninghint--top:before': {
-    'borderTopColor': '#c09854'
-  },
-  'hint--warninghint--bottom-left:before': {
-    'borderBottomColor': '#c09854'
-  },
-  'hint--warninghint--bottom-right:before': {
-    'borderBottomColor': '#c09854'
-  },
-  'hint--warninghint--bottom:before': {
-    'borderBottomColor': '#c09854'
-  },
-  'hint--warninghint--left:before': {
-    'borderLeftColor': '#c09854'
-  },
-  'hint--warninghint--right:before': {
-    'borderRightColor': '#c09854'
-  },
-  // *
- * Info
-  'hint--info:after': {
-    'backgroundColor': '#3986ac',
-    'textShadow': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': -1 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': '#1a3c4d' }]
-  },
-  'hint--infohint--top-left:before': {
-    'borderTopColor': '#3986ac'
-  },
-  'hint--infohint--top-right:before': {
-    'borderTopColor': '#3986ac'
-  },
-  'hint--infohint--top:before': {
-    'borderTopColor': '#3986ac'
-  },
-  'hint--infohint--bottom-left:before': {
-    'borderBottomColor': '#3986ac'
-  },
-  'hint--infohint--bottom-right:before': {
-    'borderBottomColor': '#3986ac'
-  },
-  'hint--infohint--bottom:before': {
-    'borderBottomColor': '#3986ac'
-  },
-  'hint--infohint--left:before': {
-    'borderLeftColor': '#3986ac'
-  },
-  'hint--infohint--right:before': {
-    'borderRightColor': '#3986ac'
-  },
-  // *
- * Success
-  'hint--success:after': {
-    'backgroundColor': '#458746',
-    'textShadow': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': -1 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': '#1a321a' }]
-  },
-  'hint--successhint--top-left:before': {
-    'borderTopColor': '#458746'
-  },
-  'hint--successhint--top-right:before': {
-    'borderTopColor': '#458746'
-  },
-  'hint--successhint--top:before': {
-    'borderTopColor': '#458746'
-  },
-  'hint--successhint--bottom-left:before': {
-    'borderBottomColor': '#458746'
-  },
-  'hint--successhint--bottom-right:before': {
-    'borderBottomColor': '#458746'
-  },
-  'hint--successhint--bottom:before': {
-    'borderBottomColor': '#458746'
-  },
-  'hint--successhint--left:before': {
-    'borderLeftColor': '#458746'
-  },
-  'hint--successhint--right:before': {
-    'borderRightColor': '#458746'
-  },
-  // *
- * source: hint-always.scss
- *
- * Defines a persisted tooltip which shows always.
- *
- * Classes added:
- * 	1) hint--always
- *
-  'hint--always:after': {
-    'opacity': '1',
-    'visibility': 'visible'
-  },
-  'hint--always:before': {
-    'opacity': '1',
-    'visibility': 'visible'
-  },
-  'hint--alwayshint--top:after': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--alwayshint--top:before': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--alwayshint--top-left:after': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--alwayshint--top-left:before': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--alwayshint--top-right:after': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--alwayshint--top-right:before': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--alwayshint--bottom:after': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--alwayshint--bottom:before': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--alwayshint--bottom-left:after': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--alwayshint--bottom-left:before': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--alwayshint--bottom-right:after': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--alwayshint--bottom-right:before': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--alwayshint--left:after': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--alwayshint--left:before': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--alwayshint--right:after': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  'hint--alwayshint--right:before': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  // *
- * source: hint-rounded.scss
- *
- * Defines rounded corner tooltips.
- *
- * Classes added:
- * 	1) hint--rounded
- *
-  'hint--rounded:after': {
-    'borderRadius': '4px'
-  },
-  // *
- * source: hint-effects.scss
- *
- * Defines various transition effects for the tooltips.
- *
- * Classes added:
- * 	1) hint--no-animate
- * 	2) hint--bounce
- *
-  'hint--no-animate:before': {
-    'WebkitTransitionDuration': '0ms',
-    'MozTransitionDuration': '0ms',
-    'transitionDuration': '0ms'
-  },
-  'hint--no-animate:after': {
-    'WebkitTransitionDuration': '0ms',
-    'MozTransitionDuration': '0ms',
-    'transitionDuration': '0ms'
-  },
-  'hint--bounce:before': {
-    'WebkitTransition': 'opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24)',
-    'MozTransition': 'opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24)',
-    'transition': 'opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24)'
-  },
-  'hint--bounce:after': {
-    'WebkitTransition': 'opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24)',
-    'MozTransition': 'opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24)',
-    'transition': 'opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24)'
-  },
-  // *
- * based on hint.css with html content support
-  'hint--htmlhint:after': {
-    'display': 'none',
-    'opacity': '0'
-  },
-  'hint__content': {
-    'background': '#383838',
-    'color': 'white',
-    'padding': [{ 'unit': 'px', 'value': 8 }, { 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 8 }, { 'unit': 'px', 'value': 10 }],
-    'fontSize': [{ 'unit': 'px', 'value': 12 }],
-    'lineHeight': [{ 'unit': 'px', 'value': 12 }],
-    'pointerEvents': 'none'
-  },
-  'hint--hoverable hint__content': {
-    'pointerEvents': 'auto'
-  },
-  'hint--html': {
-    'position': 'relative',
-    'display': 'inline-block',
-    // *
-   * tooltip arrow
-  },
-  'hint--html:before': {
-    'position': 'absolute',
-    'WebkitTransform': 'translate3d(0, 0, 0)',
-    'MozTransform': 'translate3d(0, 0, 0)',
-    'transform': 'translate3d(0, 0, 0)',
-    'visibility': 'hidden',
-    'opacity': '0',
-    'zIndex': '1000000',
-    'pointerEvents': 'none',
-    'WebkitTransition': '0.3s ease',
-    'MozTransition': '0.3s ease',
-    'transition': '0.3s ease',
-    'WebkitTransitionDelay': '0ms',
-    'MozTransitionDelay': '0ms',
-    'transitionDelay': '0ms'
-  },
-  'hint--html:after': {
-    'position': 'absolute',
-    'WebkitTransform': 'translate3d(0, 0, 0)',
-    'MozTransform': 'translate3d(0, 0, 0)',
-    'transform': 'translate3d(0, 0, 0)',
-    'visibility': 'hidden',
-    'opacity': '0',
-    'zIndex': '1000000',
-    'pointerEvents': 'none',
-    'WebkitTransition': '0.3s ease',
-    'MozTransition': '0.3s ease',
-    'transition': '0.3s ease',
-    'WebkitTransitionDelay': '0ms',
-    'MozTransitionDelay': '0ms',
-    'transitionDelay': '0ms'
-  },
-  'hint--html:hover:before': {
-    'visibility': 'visible',
-    'opacity': '1'
-  },
-  'hint--html:hover:after': {
-    'visibility': 'visible',
-    'opacity': '1'
-  },
-  'hint--html:hover:before': {
-    'WebkitTransitionDelay': '100ms',
-    'MozTransitionDelay': '100ms',
-    'transitionDelay': '100ms'
-  },
-  'hint--html:hover:after': {
-    'WebkitTransitionDelay': '100ms',
-    'MozTransitionDelay': '100ms',
-    'transitionDelay': '100ms'
-  },
-  'hint--html:before': {
-    'content': '''',
-    'position': 'absolute',
-    'background': 'transparent',
-    'border': [{ 'unit': 'px', 'value': 6 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': 'transparent' }],
-    'zIndex': '1000001'
-  },
-  'hint--html hint__content': {
-    'position': 'absolute',
-    'WebkitTransform': 'translate3d(0, 0, 0)',
-    'MozTransform': 'translate3d(0, 0, 0)',
-    'transform': 'translate3d(0, 0, 0)',
-    'visibility': 'hidden',
-    'opacity': '0',
-    'zIndex': '1000000',
-    'WebkitTransition': '0.3s ease',
-    'MozTransition': '0.3s ease',
-    'transition': '0.3s ease',
-    'WebkitTransitionDelay': '0ms',
-    'MozTransitionDelay': '0ms',
-    'transitionDelay': '0ms'
-  },
-  'hint--html:hover hint__content': {
-    'visibility': 'visible',
-    'opacity': '1'
-  },
-  'hint--html:focus hint__content': {
-    'visibility': 'visible',
-    'opacity': '1'
-  },
-  'hint--html:hover hint__content': {
-    'WebkitTransitionDelay': '100ms',
-    'MozTransitionDelay': '100ms',
-    'transitionDelay': '100ms'
-  },
-  'hint--htmlhint--notrans:before': {
-    'WebkitTransition': 'none',
-    'MozTransition': 'none',
-    'transition': 'none'
-  },
-  'hint--htmlhint--notrans:after': {
-    'WebkitTransition': 'none',
-    'MozTransition': 'none',
-    'transition': 'none'
-  },
-  'hint--htmlhint--notrans hint__content': {
-    'WebkitTransition': 'none',
-    'MozTransition': 'none',
-    'transition': 'none'
-  },
-  // *
- * top tooltip
-  'hint--top hint__content': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top:before': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--top hint__content': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--top hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': 'px', 'value': 12 }],
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--top:hover hint__content': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--top:focus hint__content': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--top-left hint__content': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top-left:before': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--top-left hint__content': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--top-left:before': {
-    'marginLeft': [{ 'unit': 'px', 'value': 6 }]
-  },
-  'hint--top-left hint__content': {
-    'marginLeft': [{ 'unit': 'px', 'value': 12 }]
-  },
-  'hint--top-left hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': 'px', 'value': 12 }],
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--top-left:hover hint__content': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--top-left:focus hint__content': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--top-right hint__content': {
-    'bottom': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--top-right:before': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--top-right hint__content': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--top-right:before': {
-    'marginLeft': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--top-right hint__content': {
-    'marginLeft': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--top-right hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': 'px', 'value': 12 }],
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--top-right:hover hint__content': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--top-right:focus hint__content': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  // *
- * bottom tooltip
-  'hint--bottom hint__content': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom:before': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--bottom hint__content': {
-    'WebkitTransform': 'translateX(-50%)',
-    'MozTransform': 'translateX(-50%)',
-    'transform': 'translateX(-50%)'
-  },
-  'hint--bottom hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'top': [{ 'unit': 'px', 'value': -12 }],
-    'left': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': 'px', 'value': 12 }],
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--bottom:hover hint__content': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--bottom:focus hint__content': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--bottom-left hint__content': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom-left:before': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--bottom-left hint__content': {
-    'WebkitTransform': 'translateX(-100%)',
-    'MozTransform': 'translateX(-100%)',
-    'transform': 'translateX(-100%)'
-  },
-  'hint--bottom-left:before': {
-    'marginLeft': [{ 'unit': 'px', 'value': 6 }]
-  },
-  'hint--bottom-left hint__content': {
-    'marginLeft': [{ 'unit': 'px', 'value': 12 }]
-  },
-  'hint--bottom-left hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'top': [{ 'unit': 'px', 'value': -12 }],
-    'left': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': 'px', 'value': 12 }],
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--bottom-left:hover hint__content': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--bottom-left:focus hint__content': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--bottom-right hint__content': {
-    'top': [{ 'unit': '%V', 'value': 1 }],
-    'left': [{ 'unit': '%H', 'value': 0.5 }]
-  },
-  'hint--bottom-right:before': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--bottom-right hint__content': {
-    'WebkitTransform': 'translateX(0)',
-    'MozTransform': 'translateX(0)',
-    'transform': 'translateX(0)'
-  },
-  'hint--bottom-right:before': {
-    'marginLeft': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--bottom-right hint__content': {
-    'marginLeft': [{ 'unit': 'px', 'value': -12 }]
-  },
-  'hint--bottom-right hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'top': [{ 'unit': 'px', 'value': -12 }],
-    'left': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': 'px', 'value': 12 }],
-    'width': [{ 'unit': '%H', 'value': 1 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--bottom-right:hover hint__content': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--bottom-right:focus hint__content': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  // *
- * right tooltip
-  'hint--right:before': {
-    'marginLeft': [{ 'unit': 'px', 'value': -12 }],
-    'marginBottom': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--right hint__content': {
-    'marginBottom': [{ 'unit': 'px', 'value': -14 }]
-  },
-  'hint--right hint__content': {
-    'left': [{ 'unit': '%H', 'value': 1 }],
-    'bottom': [{ 'unit': '%V', 'value': 0.5 }]
-  },
-  'hint--right hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'left': [{ 'unit': 'px', 'value': -12 }],
-    'top': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': '%V', 'value': 1 }],
-    'width': [{ 'unit': 'px', 'value': 12 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--right:hover hint__content': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  'hint--right:focus hint__content': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
-  // *
- * left tooltip
-  'hint--left:before': {
-    'marginRight': [{ 'unit': 'px', 'value': -12 }],
-    'marginBottom': [{ 'unit': 'px', 'value': -6 }]
-  },
-  'hint--left hint__content': {
-    'marginBottom': [{ 'unit': 'px', 'value': -14 }]
-  },
-  'hint--left hint__content': {
-    'right': [{ 'unit': '%H', 'value': 1 }],
-    'bottom': [{ 'unit': '%V', 'value': 0.5 }]
-  },
-  'hint--left hint__content:after': {
-    'content': '' '',
-    'position': 'absolute',
-    'left': [{ 'unit': '%H', 'value': 1 }],
-    'top': [{ 'unit': 'px', 'value': 0 }],
-    'height': [{ 'unit': '%V', 'value': 1 }],
-    'width': [{ 'unit': 'px', 'value': 12 }],
-    'opacity': '0',
-    'backgroundColor': 'red'
-  },
-  'hint--left:hover hint__content': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--left:focus hint__content': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  // *
- * Error
-  'hint--error hint__content': {
-    'backgroundColor': '#b34e4d'
-  },
-  'hint--errorhint--top-left:before': {
-    'borderTopColor': '#b34e4d'
-  },
-  'hint--errorhint--top-right:before': {
-    'borderTopColor': '#b34e4d'
-  },
-  'hint--errorhint--top:before': {
-    'borderTopColor': '#b34e4d'
-  },
-  'hint--errorhint--bottom-left:before': {
-    'borderBottomColor': '#b34e4d'
-  },
-  'hint--errorhint--bottom-right:before': {
-    'borderBottomColor': '#b34e4d'
-  },
-  'hint--errorhint--bottom:before': {
-    'borderBottomColor': '#b34e4d'
-  },
-  'hint--errorhint--left:before': {
-    'borderLeftColor': '#b34e4d'
-  },
-  'hint--errorhint--right:before': {
-    'borderRightColor': '#b34e4d'
-  },
-  // *
- * Warning
-  'hint--warning hint__content': {
-    'backgroundColor': '#c09854'
-  },
-  'hint--warninghint--top-left:before': {
-    'borderTopColor': '#c09854'
-  },
-  'hint--warninghint--top-right:before': {
-    'borderTopColor': '#c09854'
-  },
-  'hint--warninghint--top:before': {
-    'borderTopColor': '#c09854'
-  },
-  'hint--warninghint--bottom-left:before': {
-    'borderBottomColor': '#c09854'
-  },
-  'hint--warninghint--bottom-right:before': {
-    'borderBottomColor': '#c09854'
-  },
-  'hint--warninghint--bottom:before': {
-    'borderBottomColor': '#c09854'
-  },
-  'hint--warninghint--left:before': {
-    'borderLeftColor': '#c09854'
-  },
-  'hint--warninghint--right:before': {
-    'borderRightColor': '#c09854'
-  },
-  // *
- * Info
-  'hint--info hint__content': {
-    'backgroundColor': '#3986ac'
-  },
-  'hint--infohint--top-left:before': {
-    'borderTopColor': '#3986ac'
-  },
-  'hint--infohint--top-right:before': {
-    'borderTopColor': '#3986ac'
-  },
-  'hint--infohint--top:before': {
-    'borderTopColor': '#3986ac'
-  },
-  'hint--infohint--bottom-left:before': {
-    'borderBottomColor': '#3986ac'
-  },
-  'hint--infohint--bottom-right:before': {
-    'borderBottomColor': '#3986ac'
-  },
-  'hint--infohint--bottom:before': {
-    'borderBottomColor': '#3986ac'
-  },
-  'hint--infohint--left:before': {
-    'borderLeftColor': '#3986ac'
-  },
-  'hint--infohint--right:before': {
-    'borderRightColor': '#3986ac'
-  },
-  // *
- * Success
-  'hint--success hint__content': {
-    'backgroundColor': '#458746'
-  },
-  'hint--successhint--top-left:before': {
-    'borderTopColor': '#458746'
-  },
-  'hint--successhint--top-right:before': {
-    'borderTopColor': '#458746'
-  },
-  'hint--successhint--top:before': {
-    'borderTopColor': '#458746'
-  },
-  'hint--successhint--bottom-left:before': {
-    'borderBottomColor': '#458746'
-  },
-  'hint--successhint--bottom-right:before': {
-    'borderBottomColor': '#458746'
-  },
-  'hint--successhint--bottom:before': {
-    'borderBottomColor': '#458746'
-  },
-  'hint--successhint--left:before': {
-    'borderLeftColor': '#458746'
-  },
-  'hint--successhint--right:before': {
-    'borderRightColor': '#458746'
-  },
-  'hint--htmlhint--hidden:hover:after': {
-    'opacity': '0',
-    'visibility': 'hidden'
-  },
-  'hint--htmlhint--hidden:hover:before': {
-    'opacity': '0',
-    'visibility': 'hidden'
-  },
-  'hint--htmlhint--hidden:hover hint__content': {
-    'opacity': '0',
-    'visibility': 'hidden'
-  },
-  'hint--always:after': {
-    'opacity': '1',
-    'visibility': 'visible'
-  },
-  'hint--always:before': {
-    'opacity': '1',
-    'visibility': 'visible'
-  },
-  'hint--always hint__content': {
-    'opacity': '1',
-    'visibility': 'visible'
-  },
-  'hint--alwayshint--top hint__content': {
-    'WebkitTransform': 'translateX(-50%) translateY(-8px)',
-    'MozTransform': 'translateX(-50%) translateY(-8px)',
-    'transform': 'translateX(-50%) translateY(-8px)'
-  },
-  'hint--alwayshint--top-left hint__content': {
-    'WebkitTransform': 'translateX(-100%) translateY(-8px)',
-    'MozTransform': 'translateX(-100%) translateY(-8px)',
-    'transform': 'translateX(-100%) translateY(-8px)'
-  },
-  'hint--alwayshint--top-right hint__content': {
-    'WebkitTransform': 'translateY(-8px)',
-    'MozTransform': 'translateY(-8px)',
-    'transform': 'translateY(-8px)'
-  },
-  'hint--alwayshint--bottom hint__content': {
-    'WebkitTransform': 'translateX(-50%) translateY(8px)',
-    'MozTransform': 'translateX(-50%) translateY(8px)',
-    'transform': 'translateX(-50%) translateY(8px)'
-  },
-  'hint--alwayshint--bottom-left hint__content': {
-    'WebkitTransform': 'translateX(-100%) translateY(8px)',
-    'MozTransform': 'translateX(-100%) translateY(8px)',
-    'transform': 'translateX(-100%) translateY(8px)'
-  },
-  'hint--alwayshint--bottom-right hint__content': {
-    'WebkitTransform': 'translateY(8px)',
-    'MozTransform': 'translateY(8px)',
-    'transform': 'translateY(8px)'
-  },
-  'hint--alwayshint--left hint__content': {
-    'WebkitTransform': 'translateX(-8px)',
-    'MozTransform': 'translateX(-8px)',
-    'transform': 'translateX(-8px)'
-  },
-  'hint--alwayshint--right hint__content': {
-    'WebkitTransform': 'translateX(8px)',
-    'MozTransform': 'translateX(8px)',
-    'transform': 'translateX(8px)'
-  },
   // ! normalize.css v3.0.2 | MIT License | git.io/normalize
   // *
  * 1. Set default font family to sans-serif.
@@ -3457,6 +2063,9 @@ export default StyleSheet.create({
   'p': {
     'color': 'rgba(0, 0, 0, 0.87)'
   },
+  'body': {
+    'color': 'rgba(0, 0, 0, 0.87)'
+  },
   'mui-font-style-body-1': {
     'color': 'rgba(0, 0, 0, 0.87)'
   },
@@ -3557,6 +2166,9 @@ export default StyleSheet.create({
     'fontWeight': '400'
   },
   'p': {
+    'fontWeight': '400'
+  },
+  'body': {
     'fontWeight': '400'
   },
   'mui-font-style-body-1': {
@@ -3736,6 +2348,13 @@ export default StyleSheet.create({
     'letterSpacing': [{ 'unit': 'px', 'value': 0 }]
   },
   'p': {
+    'fontSize': [{ 'unit': 'px', 'value': 13 }],
+    'lineHeight': [{ 'unit': 'px', 'value': 20 }],
+    'paddingTop': [{ 'unit': 'px', 'value': 6 }],
+    'marginBottom': [{ 'unit': 'px', 'value': 14 }],
+    'letterSpacing': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'body': {
     'fontSize': [{ 'unit': 'px', 'value': 13 }],
     'lineHeight': [{ 'unit': 'px', 'value': 20 }],
     'paddingTop': [{ 'unit': 'px', 'value': 6 }],
@@ -5994,6 +4613,152 @@ export default StyleSheet.create({
   '*::before': {
     'boxSizing': 'inherit'
   },
+  'html': {
+    'height': [{ 'unit': '%V', 'value': 1 }],
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }]
+  },
+  'body': {
+    'height': [{ 'unit': '%V', 'value': 1 }],
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }]
+  },
+  '#react_main': {
+    'height': [{ 'unit': '%V', 'value': 1 }],
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }]
+  },
+  'main-view': {
+    'display': 'flex',
+    'flexDirection': 'column',
+    'height': [{ 'unit': '%V', 'value': 1 }]
+  },
+  'main-view__row--expanded': {
+    'flex': '1',
+    'position': 'relative'
+  },
+  'main-view__row-content': {
+    'position': 'absolute',
+    'left': [{ 'unit': 'px', 'value': 0 }],
+    'top': [{ 'unit': 'px', 'value': 0 }],
+    'width': [{ 'unit': '%H', 'value': 1 }],
+    'height': [{ 'unit': '%V', 'value': 1 }]
+  },
+  'ie9 main-view': {
+    'height': [{ 'unit': '%V', 'value': 1 }],
+    'display': 'block'
+  },
+  'ie9 main-view__row': {
+    'display': 'block',
+    'height': [{ 'unit': 'px', 'value': 41 }]
+  },
+  'ie9 main-view__rowmain-view__row--expanded': {
+    'height': [{ 'unit': '%V', 'value': NaN }]
+  },
+  'body': {
+    'backgroundColor': 'white'
+  },
+  'a': {
+    'color': '#00bcd4',
+    'textDecoration': 'none'
+  },
+  'a:visited': {
+    'color': '#00bcd4'
+  },
+  'a:hover': {
+    'color': '#12e4ff'
+  },
+  '[class^="flaticon-"]:before': {
+    'fontFamily': 'Flaticon',
+    'fontStyle': 'normal'
+  },
+  '[class*=" flaticon-"]:before': {
+    'fontFamily': 'Flaticon',
+    'fontStyle': 'normal'
+  },
+  '[class^="flaticon-"]:after': {
+    'fontFamily': 'Flaticon',
+    'fontStyle': 'normal'
+  },
+  '[class*=" flaticon-"]:after': {
+    'fontFamily': 'Flaticon',
+    'fontStyle': 'normal'
+  },
+  'icon-button mui-raised-button-label': {
+    'paddingRight': [{ 'unit': 'px', 'value': 12 }],
+    'paddingLeft': [{ 'unit': 'px', 'value': 6 }]
+  },
+  'icon-button mui-font-icon': {
+    'color': '#00bcd4'
+  },
+  'icon-buttonmui-is-primary mui-font-icon': {
+    'color': 'white'
+  },
+  'icon-link-button': {
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 6 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 6 }]
+  },
+  'icon-link-button mui-raised-button-label': {
+    'paddingRight': [{ 'unit': 'px', 'value': 12 }],
+    'paddingLeft': [{ 'unit': 'px', 'value': 6 }]
+  },
+  'icon-link-button mui-font-icon': {
+    'color': '#00bcd4'
+  },
+  'mui-flat-button': {
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 6 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 6 }]
+  },
+  'nodisplay': {
+    'display': 'none'
+  },
+  'defcursor': {
+    'cursor': 'default'
+  },
+  'cursor-pointer': {
+    'cursor': 'pointer'
+  },
+  'vm > *': {
+    'verticalAlign': 'middle'
+  },
+  'vm:after': {
+    'content': '""',
+    'display': 'inline-block',
+    'verticalAlign': 'middle',
+    'height': [{ 'unit': '%V', 'value': 1 }]
+  },
+  'disable-pointer-events stop-events': {
+    'pointerEvents': 'none'
+  },
+  'disable-pointer-events disable-events-on-map-move': {
+    'pointerEvents': 'none'
+  },
+  'noevents': {
+    'pointerEvents': 'none'
+  },
+  'events': {
+    'pointerEvents': 'initial'
+  },
+  'nowrap': {
+    'whiteSpace': 'nowrap'
+  },
+  'ellipsis': {
+    'overflow': 'hidden',
+    'textOverflow': 'ellipsis'
+  },
+  'noselect': {
+    'WebkitTouchCallout': 'none',
+    'WebkitUserSelect': 'none',
+    'KhtmlUserSelect': 'none',
+    'MozUserSelect': 'none',
+    'MsUserSelect': 'none',
+    'userSelect': 'none'
+  },
+  'bgred': {
+    'backgroundColor': 'red'
+  },
+  'bred': {
+    'border': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': 'red' }]
+  },
   'header hr': {
     'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
     'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }]
@@ -6578,8 +5343,7 @@ export default StyleSheet.create({
     'right': [{ 'unit': 'px', 'value': 5 }],
     'top': [{ 'unit': 'px', 'value': 5 }],
     'color': 'red',
-    'visibility': 'hidden',
-    'cursor': 'pointer'
+    'visibility': 'hidden'
   },
   'map-marker map-marker-hint__close-button--visible': {
     'visibility': 'visible'
@@ -6609,5 +5373,183 @@ export default StyleSheet.create({
   },
   'map-marker map-marker-hint__content--visible': {
     'height': [{ 'unit': 'px', 'value': 61 }]
+  },
+  'public_fixedDataTableCell_highlighted': {
+    'backgroundColor': 'transparent'
+  },
+  'public_fixedDataTableCell_main': {
+    'backgroundColor': 'transparent'
+  },
+  'public_fixedDataTableRow_highlighted': {
+    'backgroundColor': 'transparent'
+  },
+  'public_fixedDataTableRow_highlighted public_fixedDataTableCell_main': {
+    'backgroundColor': 'transparent'
+  },
+  'public_fixedDataTable_main': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTable_header': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'fixedDataTable_hasBottomBorder': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTable_footer': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTableCell_main': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTableCell_main': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTableCell_lastChild': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'fixedDataTable_hasBottomBorder': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'fixedDataTableColumnResizerLine_main': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'fixedDataTableRow_fixedColumnsDivider': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTableCell_main': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'public_fixedDataTable_header': {
+    'border': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'fixedDataTable_shadow': {
+    'visibility': 'hidden'
+  },
+  'public_fixedDataTableCell_cellContent': {
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }]
+  },
+  'ice-tableice-table--row-even': {
+    'backgroundColor': '#f3f3f3'
+  },
+  'ice-tableice-table--row-evenice-table--row-hovered': {
+    'cursor': 'pointer',
+    'backgroundColor': '#bbb'
+  },
+  'ice-tableice-table--row-odd': {
+    'backgroundColor': 'white'
+  },
+  'ice-tableice-table--row-oddice-table--row-hovered': {
+    'cursor': 'pointer',
+    'backgroundColor': '#bbb'
+  },
+  'ice-table ice-table__column0': {
+    'textAlign': 'center'
+  },
+  'ice-table ice-table__column0-number': {
+    'display': 'inline-block',
+    'border': [{ 'unit': 'px', 'value': 3 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#3F51B5' }],
+    'borderRadius': '8px',
+    'width': [{ 'unit': 'px', 'value': 40 }],
+    'height': [{ 'unit': 'px', 'value': 28 }],
+    'backgroundColor': 'white',
+    'fontWeight': 'bold',
+    'fontSize': [{ 'unit': 'px', 'value': 12 }],
+    'textAlign': 'center'
+  },
+  'ice-table ice-table__column0-numberice-table__column0-number__color0': {
+    'borderColor': '#00BCD4'
+  },
+  'ice-table ice-table__column0-numberice-table__column0-number__color1': {
+    'borderColor': '#3F51B5'
+  },
+  'ice-table ice-table__column1-title': {
+    'fontWeight': 'bold'
+  },
+  'ice-table ice-table__column1-address': {
+    'fontStyle': 'italic',
+    'fontSize': [{ 'unit': 'px', 'value': 12 }]
+  },
+  'ice-table ice-table__column2': {
+    'backgroundColor': 'white',
+    'pointerEvents': 'none'
+  },
+  'ice-table-header': {
+    'height': [{ 'unit': '%V', 'value': 1 }],
+    'borderBottom': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#eee' }],
+    'position': 'relative',
+    'backgroundColor': 'white'
+  },
+  'ice-table-header__show-filters': {
+    'position': 'absolute',
+    'bottom': [{ 'unit': 'px', 'value': 0 }],
+    'left': [{ 'unit': 'px', 'value': 0 }],
+    'padding': [{ 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 10 }]
+  },
+  'ice-table-header__show-filters-href': {
+    'cursor': 'pointer'
+  },
+  'ice-table-header__show-filters-href--disabled': {
+    'cursor': 'default',
+    'color': '#eee'
+  },
+  'ice-table-header__show-filters-href--disabled:hover': {
+    'color': '#eee'
+  },
+  'ice-table-header__filter-line-header': {
+    'padding': [{ 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 10 }, { 'unit': 'px', 'value': 10 }],
+    'color': '#666'
+  },
+  'ice-table-header__filter-line': {
+    'paddingLeft': [{ 'unit': 'px', 'value': 20 }],
+    'paddingRight': [{ 'unit': 'px', 'value': 20 }],
+    'paddingBottom': [{ 'unit': 'px', 'value': 10 }]
+  },
+  'ice-table-header__filter-line mui-input': {
+    'marginTop': [{ 'unit': 'px', 'value': 0 }],
+    'marginBottom': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'page-footer-holder hr': {
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'screen&&<w770': {
+      'display': 'none'
+    }
+  },
+  'page-footer': {
+    'maxWidth': [{ 'unit': '%H', 'value': 1 }],
+    'marginLeft': [{ 'unit': 'string', 'value': 'auto' }],
+    'marginRight': [{ 'unit': 'string', 'value': 'auto' }],
+    'marginLeft': [{ 'unit': 'px', 'value': 20 }],
+    'marginRight': [{ 'unit': 'px', 'value': 20 }],
+    'marginTop': [{ 'unit': 'px', 'value': 10 }],
+    'marginBottom': [{ 'unit': 'px', 'value': 10 }]
+  },
+  'page-footer::after': {
+    'clear': 'both',
+    'content': '""',
+    'display': 'block'
+  },
+  'page-footer page-footer__left': {
+    'float': 'left',
+    'display': 'block',
+    'marginRight': [{ 'unit': '%H', 'value': 0.0059497 }],
+    'width': [{ 'unit': '%H', 'value': 0.49702509999999994 }]
+  },
+  'page-footer page-footer__left:last-child': {
+    'marginRight': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'page-footer page-footer__right': {
+    'float': 'left',
+    'display': 'block',
+    'marginRight': [{ 'unit': '%H', 'value': 0.0059497 }],
+    'width': [{ 'unit': '%H', 'value': 0.49702509999999994 }],
+    'textAlign': 'right'
+  },
+  'page-footer page-footer__right:last-child': {
+    'marginRight': [{ 'unit': 'px', 'value': 0 }]
+  },
+  'css-load-display': {
+    'visibility': 'visible'
   }
 });

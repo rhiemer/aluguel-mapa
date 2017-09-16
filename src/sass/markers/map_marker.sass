@@ -26,7 +26,15 @@
       background-image: url('../../../assets/icons/map_icons/map_icon_std.svg')
     &.map_icon_std_orange
       background-image: url('../../../assets/icons/map_icons/map_icon_std_orange.svg')
-
+      
+  &.hint--balloon    
+   .hint__content      
+      z-index: $hintZIndex - 20
+      transition: background-color 1.0s ease
+   &:before
+      z-index: $hintZIndex - 19      
+      transition: border-color 1.0s ease    
+      
   .map-marker-hint
     cursor: default
     box-shadow: 2px 2px 12px rgba(0,0,0,0.5)

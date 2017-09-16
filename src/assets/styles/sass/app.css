@@ -3188,6 +3188,9 @@ a {
 .noevents {
   pointer-events: none; }
 
+.allevents {
+  pointer-events: all; }
+
 .events {
   pointer-events: initial; }
 

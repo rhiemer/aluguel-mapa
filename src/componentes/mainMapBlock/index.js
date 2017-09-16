@@ -65,8 +65,15 @@ export default class MainMapBlock extends Component {
   _onChildClick = (key, childProps) => {    
     const markerId = childProps.marker.id;
     const index = this.props.markers.findIndex(m => m.id === markerId);
-    if (this.props.onChildClick) {      
-      this.props.onChildClick(index);
+    if (this.props.onChildClick) { 
+      if (this.props.openBallonIndex && index === this.props.openBallonIndex)
+      {
+         this.props.onChildClick(-1);
+      }
+      else
+      {            
+         this.props.onChildClick(index);        
+      }
     }
   }
 
@@ -84,10 +91,8 @@ export default class MainMapBlock extends Component {
     }
   }
 
-  _onBalloonCloseClick = () => {
-    console.log('_onBalloonCloseClick1')
-    if (this.props.onChildClick) {
-      console.log('_onBalloonCloseClick2')
+  _onBalloonCloseClick = () => {    
+    if (this.props.onChildClick) {      
       this.props.onChildClick(-1);
     }
   }

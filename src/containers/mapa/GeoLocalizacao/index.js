@@ -36,7 +36,8 @@ class GeoLocalizacao extends React.PureComponent {
         listarAnuncios: PropTypes.func,
         getAnuncios: PropTypes.func,
         handleSubmit: PropTypes.func,
-        keyMapa:PropTypes.string
+        keyMapa:PropTypes.string,
+        onChildClick: PropTypes.func,
     };
 
     static defaultProps = {
@@ -87,10 +88,7 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onChildClick:(openBalloonIndex)=> {
         dispatch(showBallonMapa(openBalloonIndex));
-    },
-    onCloseClick:(openBalloonIndex)=> {
-        dispatch(showBallonMapa(openBalloonIndex));
-    } 
+    }
 });
 
 GeoLocalizacao = reduxForm({ // eslint-disable-line no-class-assign

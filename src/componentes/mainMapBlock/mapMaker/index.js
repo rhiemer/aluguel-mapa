@@ -191,14 +191,14 @@ export default class MapMarker extends Component {
         </div>
         <div
           style={hintBaloonHorizontalPosStyle}
-          className={cx('hint__content map-marker-hint', this.props.showBallon ? '' : 'noevents')}          
+          className={cx('hint__content map-marker-hint', this.props.showBallon ? 'allevents' : 'noevents')}          
           onMouseEnter={this._onMouseEnterContent}
           onMouseLeave={this._onMouseLeaveContent}>
           <div className={cx('map-marker-hint__close-button', this.props.showBallon ? 'map-marker-hint__close-button--visible' : '')}>
-               <FontAwesome name="search" onClick={this._onCloseClick}/>
+               <FontAwesome name="close" onClick={this._onCloseClick} />
           </div>
 
-          <div className="map-marker-hint__title">
+          <div className="map-marker-hint__title" >
             <strong>{this.props.marker.title}</strong>
           </div>
           <div className="map-marker-hint__address">

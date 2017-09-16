@@ -65,3 +65,13 @@ export function* showBallonMapaSaga(data) {
     }
 }
 
+export function* closeBallonMapaSaga(data) {       
+    try {              
+        arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_SHOW_BALLON_MAPA);                
+        yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_SHOW_BALLON_MAPA,fromJS(-1)));
+    } catch (err) {
+        console.error("Erro showBallonMapa",err)
+        toastr.error('Erro', 'Erro ao indice do balão aberto.');
+    }
+}
+

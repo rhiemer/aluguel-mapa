@@ -38,6 +38,7 @@ class GeoLocalizacao extends React.PureComponent {
         handleSubmit: PropTypes.func,
         keyMapa:PropTypes.string,
         onChildClick: PropTypes.func,
+        onHoveredRowIndexChange:PropTypes.func,
     };
 
     static defaultProps = {
@@ -87,6 +88,9 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(listarAnunciosMapa(lat, lng));
     },
     onChildClick:(openBalloonIndex)=> {
+        dispatch(showBallonMapa(openBalloonIndex));
+    },
+    onHoveredRowIndexChange:(openBalloonIndex)=> {
         dispatch(showBallonMapa(openBalloonIndex));
     }
 });

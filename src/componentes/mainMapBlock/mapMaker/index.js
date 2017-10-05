@@ -112,8 +112,8 @@ export default class MapMarker extends Component {
     this.props.$onMouseAllow(true); // enable mouse move hovers
   }
 
-  _onCloseClick = () => {        
-    if (this.props.onCloseClick) {      
+  _onCloseClick = () => {    
+    if (this.props.onCloseClick) {    
       this.props.onCloseClick();
     }
   }

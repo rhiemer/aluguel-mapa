@@ -132,13 +132,21 @@ export default class IceFixedTable extends Component {
   }
 
   _onVisibleRowsChange = (height, verticalScrollState) => {
+<<<<<<< HEAD
     const scrollState = verticalScrollState || this.verticalScrollState; // {index: 0, offset: -154, position: 154, contentHeight: 69401}
     
+=======
+    const scrollState = verticalScrollState || this.verticalScrollState; // {index: 0, offset: -154, position: 154, contentHeight: 69401}    
+>>>>>>> 721ee30a272de8606691c0a1691c3aa912dd24cf
     if (!scrollState) {
       return;
     }
 
+<<<<<<< HEAD
     
+=======
+   
+>>>>>>> 721ee30a272de8606691c0a1691c3aa912dd24cf
     if (!this.props.rowsCount) {
       this.rowYPositions[0].rowIndex = -1; // reset
       this._onVisibleRowsChangeCall(-1, -1);
@@ -206,6 +214,7 @@ export default class IceFixedTable extends Component {
   }
 
   _onHeightChange = (h) => {
+    console.log(`_onHeightChange=${h}`)
     this.maxVisibleRows_ = 0;
     this._onVisibleRowsChange(h);
   }
@@ -233,7 +242,7 @@ export default class IceFixedTable extends Component {
     }
   }
 
-  _onRowMouseEnterCalc = () => {
+  _onRowMouseEnterCalc = () => {    
     if (this.mousePosX !== null && this.mousePosY !== null) {
       //console.log(`_onRowMouseEnterCalc=${this.mousePosX} ${this.mousePosY} ${this.rowYPositions[0].rowIndex}`);
       let rowIndex = -1;
@@ -243,9 +252,8 @@ export default class IceFixedTable extends Component {
           rowIndex = this.rowYPositions[i].rowIndex;
           break;
         }
-      }
-      
-      ;
+      }     
+
 
       if (rowIndex !== -1) {
         this._onRowMouseEnter(rowIndex);
@@ -294,6 +302,7 @@ export default class IceFixedTable extends Component {
   }
 
   _onTableScrollChange = (x, y, verticalScrollState) => {
+    console.log(`_onTableScrollChange=${x} ${y} ${verticalScrollState}`)
     if (this.initialized_) {
       if (verticalScrollState) {
         if (!this.inScroll) {

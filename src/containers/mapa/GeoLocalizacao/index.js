@@ -41,8 +41,12 @@ class GeoLocalizacao extends React.PureComponent {
         handleSubmit: PropTypes.func,
         keyMapa:PropTypes.string,
         onChildClick: PropTypes.func,
+<<<<<<< HEAD
         onMarkerHover: PropTypes.func,
         onHoveredRowIndexChange: PropTypes.func,
+=======
+        onHoveredRowIndexChange:PropTypes.func,
+>>>>>>> 721ee30a272de8606691c0a1691c3aa912dd24cf
     };
 
     static defaultProps = {
@@ -101,7 +105,7 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onHoveredRowIndexChange:(hoverMarkerIndex)=> {
         dispatch(selecionarLinhaListagemAnuncio(hoverMarkerIndex));
-    },
+    }
 });
 
 GeoLocalizacao = reduxForm({ // eslint-disable-line no-class-assign

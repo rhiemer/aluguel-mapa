@@ -77,8 +77,9 @@ export default class IceTable extends React.PureComponent {
   _onRowMouseEnter = (index) => {    
     this.props.onHoveredRowIndexChange(index);
   }
-
+  
   _onRowMouseLeave = (/* index */) => {
+    console.log(`_onRowMouseLeave`);
     this.props.onHoveredRowIndexChange(-1);
   }
 

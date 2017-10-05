@@ -5,7 +5,10 @@ import { GEOLOCALIZACAO_FORM_MAPA,
          FIELD_ALTERAR_LOCALIDADE_FILTRO,
          FIELD_CENTER_MAPA,
          FIELD_KEY_MAPA,
-         FIELD_SHOW_BALLON_MAPA} from './constants';
+         FIELD_SHOW_BALLON_MAPA,
+         FIELD_HOVERED_MAP_ROWINDEX,
+         FIELD_HOVER_MAKER_INDEX
+        } from './constants';
 
 const listarAnunciosMapaFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_FORM_GEOLOCALIZACAO_MAPA);
 const listarAnunciosMapaSelector = createSelector(
@@ -37,6 +40,18 @@ const showBallonMapaSelector = createSelector(
       (openBalloonIndex) => openBalloonIndex
 ); 
 
+const hoveredMapRowIndexFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_HOVERED_MAP_ROWINDEX);
+const hoveredMapRowIndexSelector = createSelector(
+      hoveredMapRowIndexFormSelector,
+      (hoveredMapRowIndex) => hoveredMapRowIndex
+);
+
+const hoverMarkerIndexFormSelector = (state) => formValueSelector(GEOLOCALIZACAO_FORM_MAPA)(state,FIELD_HOVER_MAKER_INDEX);
+const hoverMarkerIndexSelector = createSelector(
+      hoverMarkerIndexFormSelector,
+      (hoverMarkerIndex) => hoverMarkerIndex
+);
+
 export {
      listarAnunciosMapaFormSelector,
      listarAnunciosMapaSelector,
@@ -47,5 +62,9 @@ export {
      alterarKeyMapaFormSelector,
      alterarKeyMapaSelector,
      showBallonMapaFormSelector,
-     showBallonMapaSelector    
+     showBallonMapaSelector,
+     hoveredMapRowIndexFormSelector,
+     hoveredMapRowIndexSelector,
+     hoverMarkerIndexFormSelector,
+     hoverMarkerIndexSelector         
   };

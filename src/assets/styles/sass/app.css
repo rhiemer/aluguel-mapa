@@ -3636,15 +3636,17 @@ a {
   margin: 0; }
 
 .ice-table.ice-table--row-even {
+  cursor: pointer;
+  border-color: transparent;
   background-color: #f3f3f3; }
   .ice-table.ice-table--row-even.ice-table--row-hovered {
-    cursor: pointer;
     background-color: #bbb; }
 
 .ice-table.ice-table--row-odd {
+  cursor: pointer;
+  border-color: transparent;
   background-color: white; }
   .ice-table.ice-table--row-odd.ice-table--row-hovered {
-    cursor: pointer;
     background-color: #bbb; }
 
 .ice-table .ice-table__column0 {

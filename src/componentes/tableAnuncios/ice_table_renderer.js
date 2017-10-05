@@ -127,13 +127,13 @@ function renderColumn2(cellDataKey, rowData /*, rowIndex*/) {
 }
 
 export function getRowClassNameAt(i, isHovered, isFirstInvisibleRow) {
-  const borderTopClass = isFirstInvisibleRow ? K_ROW_CLASS_NAME_BORDER_LINE : '';
+  const borderTopClass = isFirstInvisibleRow ? K_ROW_CLASS_NAME_BORDER_LINE+' ':'';
 
-  if (isHovered) {
-    return borderTopClass + ' ' + (i % 2 === 0 ? K_ROW_CLASS_NAME_EVEN_HOVERED : K_ROW_CLASS_NAME_ODD_HOVERED);
+  if (isHovered) {    
+    return borderTopClass + (i % 2 === 0 ? K_ROW_CLASS_NAME_EVEN_HOVERED : K_ROW_CLASS_NAME_ODD_HOVERED);
   }
 
-  return borderTopClass + ' ' + (i % 2 === 0 ? K_ROW_CLASS_NAME_EVEN : K_ROW_CLASS_NAME_ODD);
+  return borderTopClass + (i % 2 === 0 ? K_ROW_CLASS_NAME_EVEN : K_ROW_CLASS_NAME_ODD);
 }
 
 export function cellRenderer(cellDataKey, rowData, rowIndex) {

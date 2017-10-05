@@ -112,10 +112,8 @@ export default class MapMarker extends Component {
     this.props.$onMouseAllow(true); // enable mouse move hovers
   }
 
-  _onCloseClick = () => {
-    console.log('_onCloseClick1');    
-    if (this.props.onCloseClick) {
-      console.log('_onCloseClick2');    
+  _onCloseClick = () => {        
+    if (this.props.onCloseClick) {      
       this.props.onCloseClick();
     }
   }
@@ -167,7 +165,7 @@ export default class MapMarker extends Component {
 
     const styleMarkerMarker = calcMarkerMarkerStyle(scale, zIndexStyle, markerStyle, imageStyle);
     
-    console.log(this.props.showBallon)
+    
     
     // css hints library https://github.com/istarkov/html-hint
     return (

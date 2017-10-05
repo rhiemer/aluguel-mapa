@@ -96,6 +96,7 @@ export default class IceFixedTable extends Component {
   }
 
   _getRowClassNameAt = (i) => {
+    
     if (i === 0) return null;
     if (this.props.getRowClassNameAt) {
       return this.props.getRowClassNameAt(i - K_HEADER_FIELD_INDEX_DELTA);
@@ -132,10 +133,12 @@ export default class IceFixedTable extends Component {
 
   _onVisibleRowsChange = (height, verticalScrollState) => {
     const scrollState = verticalScrollState || this.verticalScrollState; // {index: 0, offset: -154, position: 154, contentHeight: 69401}
+    
     if (!scrollState) {
       return;
     }
 
+    
     if (!this.props.rowsCount) {
       this.rowYPositions[0].rowIndex = -1; // reset
       this._onVisibleRowsChangeCall(-1, -1);
@@ -218,6 +221,7 @@ export default class IceFixedTable extends Component {
   }
 
   _onRowMouseEnter = (rowIndex) => {
+    
     if (rowIndex !== this.currentRowIndex) {
       this._onRowMouseLeave();
 
@@ -231,13 +235,17 @@ export default class IceFixedTable extends Component {
 
   _onRowMouseEnterCalc = () => {
     if (this.mousePosX !== null && this.mousePosY !== null) {
+      //console.log(`_onRowMouseEnterCalc=${this.mousePosX} ${this.mousePosY} ${this.rowYPositions[0].rowIndex}`);
       let rowIndex = -1;
       for (let i = 0; this.rowYPositions[i].rowIndex >= 0; ++i) {
+        console.log(`_onRowMouseEnterCalcFor=${i} ${this.mousePosY} ${this.rowYPositions[i].rowYTop} ${this.rowYPositions[i].rowYBottom}`);
         if (this.mousePosY >= this.rowYPositions[i].rowYTop && this.mousePosY < this.rowYPositions[i].rowYBottom) {
           rowIndex = this.rowYPositions[i].rowIndex;
           break;
         }
       }
+      
+      ;
 
       if (rowIndex !== -1) {
         this._onRowMouseEnter(rowIndex);
@@ -247,18 +255,19 @@ export default class IceFixedTable extends Component {
     }
   }
 
-  _onMouseLeave = () => {
+  _onMouseLeave = () => {   
     this._onRowMouseLeave();
     this.mousePosX = null;
     this.mousePosY = null;
   }
 
   _onMouseMove = (event) => {
+    
     const targetRect = event.currentTarget.getBoundingClientRect();
     this.mousePosX = event.clientX - targetRect.left;
     this.mousePosY = event.clientY - targetRect.top;
 
-    if (!this.inScroll) {
+    if (!this.inScroll) {      
       this._onRowMouseEnterCalc();
     }
   }
@@ -337,8 +346,8 @@ export default class IceFixedTable extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(`componentWillReceiveProps2=${this.props.startRow} ${nextProps.startRow}`);
     const K_ANIM_TIME = 300;
-
     if (nextProps.startRow !== null && this.props.startRow === null) {
       let rowToScroll = nextProps.startRow;
 

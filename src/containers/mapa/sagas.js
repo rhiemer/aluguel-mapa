@@ -7,14 +7,19 @@ import {listarAnunciosMapaSaga,
         alterarPosicaoMapaSaga,
         alterarKeyMapaSaga,
         showBallonMapaSaga,
-        closeBallonMapaSaga} from './GeoLocalizacao/sagas'
+        closeBallonMapaSaga,
+        changeHoveredMapRowIndex,
+        changeHoverMarkerIndex
+       } from './GeoLocalizacao/sagas'
 
 import { MAPA_LISTAR_LOCALIDADE_HEADER,
          MAPA_ALTERAR_LOCALIDADE_FILTRO,         
          MAPA_REFRESH_LOCALIDADE_FILTRO,
          LISTAR_ANUNCIOS_MAPA,  
          SHOW_BALLON_MAPA,
-         CLOSE_BALLON_MAPA       
+         CLOSE_BALLON_MAPA,
+         SELECIONAR_LINHA_LISTAGEM_ANUNCIO,
+         SELECIONAR_BALAO_MAPA_ANUNCIO      
         } from './constants'
         
 export function* defaultSaga() {
@@ -37,14 +42,28 @@ export function* defaultSaga() {
                                                        takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,listarAnunciosMapaSaga),
                                                        takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarPosicaoMapaSaga), 
                                                        takeEvery(MAPA_REFRESH_LOCALIDADE_FILTRO,alterarKeyMapaSaga),                                                                                                                 
-                                                      ]);  
+                                                      ]);
+  
+  const composeSelecionarLinhaListagemAnuncio = yield all([   
+                                                      takeEvery(SELECIONAR_LINHA_LISTAGEM_ANUNCIO,changeHoveredMapRowIndex),
+                                                      takeEvery(SELECIONAR_LINHA_LISTAGEM_ANUNCIO,changeHoverMarkerIndex)
+                                                  ]);
+
+  const composeSelecionarBalaoMapaAnuncio = yield all([   
+    takeEvery(SELECIONAR_BALAO_MAPA_ANUNCIO,changeHoverMarkerIndex),
+    takeEvery(SELECIONAR_BALAO_MAPA_ANUNCIO,changeHoveredMapRowIndex),
+  ]);                                                   
+  
+                                                      
   yield take(LOCATION_CHANGE);
   yield cancel(listarLocalidadeHeaderWatcher);
   yield cancel(listarAnunciosWatcher);
   yield cancel(composeFilterListarAnuncioWatcher); 
   yield cancel(composeRefreshLocalidadeFiltro)
   yield cancel(showBallonMapaWatcher);
-  yield cancel(closeBallonMapaWatcher);  
+  yield cancel(closeBallonMapaWatcher); 
+  yield cancel(composeSelecionarLinhaListagemAnuncio); 
+  yield cancel(composeSelecionarBalaoMapaAnuncio); 
   return;
 }
 

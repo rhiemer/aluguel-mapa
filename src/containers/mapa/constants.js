@@ -4,5 +4,7 @@ export const MAPA_REFRESH_LOCALIDADE_FILTRO = 'app/Mapa/RefreshLocalidadeFiltro'
 export const LISTAR_ANUNCIOS_MAPA  = 'app/Mapa/ListarAnunciosMapa';
 export const SHOW_BALLON_MAPA  = 'app/Mapa/ShowBallonMap';
 export const CLOSE_BALLON_MAPA  = 'app/Mapa/CloseBallonMap';
+export const SELECIONAR_LINHA_LISTAGEM_ANUNCIO  = 'app/Mapa/SelecionarLinhaListagemAnuncio';
+export const SELECIONAR_BALAO_MAPA_ANUNCIO  = 'app/Mapa/SelecionarBalaoMapaAnuncio';
 export const SELECTOR_GLOBAL_MAPA='globalMapa'
 export const SELECTOR_LOCALIDADE_FILTRO='localidadeFiltro'

@@ -17,14 +17,17 @@ import {
 
 import {NoSpaceRowGeoLocalizacao,ColMapa} from './styles';
 import {GEOLOCALIZACAO_FORM_MAPA} from './constants';
-import {listarAnunciosMapa,showBallonMapa} from './actions';
+import {listarAnunciosMapa,showBallonMapa,selecionarBalaoMapaAnuncio,selecionarLinhaListagemAnuncio} from './actions';
 import MainMapBlock from '../../../componentes/mainMapBlock'
 import TableAnuncios from '../../../componentes/tableAnuncios'
 import {listarAnunciosMapaSelector,
         alterarLocalidadeMapaFiltroSelector,
         alterarKeyMapaSelector,
         alterarCenterMapaSelector,
-        showBallonMapaSelector} from './selectors';
+        showBallonMapaSelector,
+        hoverMarkerIndexSelector,
+        hoveredMapRowIndexSelector        
+       } from './selectors';
 
 
 class GeoLocalizacao extends React.PureComponent {
@@ -38,6 +41,8 @@ class GeoLocalizacao extends React.PureComponent {
         handleSubmit: PropTypes.func,
         keyMapa:PropTypes.string,
         onChildClick: PropTypes.func,
+        onMarkerHover: PropTypes.func,
+        onHoveredRowIndexChange: PropTypes.func,
     };
 
     static defaultProps = {
@@ -80,6 +85,8 @@ const mapStateToProps = (state) => ({
                                       mapaPosicao:alterarCenterMapaSelector(state),
                                       keyMapa:alterarKeyMapaSelector(state),
                                       openBallonIndex:showBallonMapaSelector(state),
+                                      hoverMarkerIndex:hoverMarkerIndexSelector(state),
+                                      hoveredMapRowIndex:hoveredMapRowIndexSelector(state),
                                     });
 
 const mapDispatchToProps = (dispatch) => ({   
@@ -88,7 +95,13 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onChildClick:(openBalloonIndex)=> {
         dispatch(showBallonMapa(openBalloonIndex));
-    }
+    },
+    onMarkerHover:(hoveredMapRowIndex)=> {
+        dispatch(selecionarBalaoMapaAnuncio(hoveredMapRowIndex));
+    },
+    onHoveredRowIndexChange:(hoverMarkerIndex)=> {
+        dispatch(selecionarLinhaListagemAnuncio(hoverMarkerIndex));
+    },
 });
 
 GeoLocalizacao = reduxForm({ // eslint-disable-line no-class-assign

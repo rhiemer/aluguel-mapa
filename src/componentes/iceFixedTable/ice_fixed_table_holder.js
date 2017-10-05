@@ -2,6 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import {Table,Column} from 'fixed-data-table';
 
+
 export default class IceFixedTableHolder extends Component {
   static propTypes = {
     cellRenderer: PropTypes.func.isRequired,

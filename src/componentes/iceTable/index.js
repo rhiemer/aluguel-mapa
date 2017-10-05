@@ -74,7 +74,7 @@ export default class IceTable extends React.PureComponent {
     }
   }
 
-  _onRowMouseEnter = (index) => {
+  _onRowMouseEnter = (index) => {    
     this.props.onHoveredRowIndexChange(index);
   }
 
@@ -88,6 +88,7 @@ export default class IceTable extends React.PureComponent {
   }
 
   _resetTableToStartRow = () => {
+    console.log("_resetTableToStartRow");
     if (this.props.onStartRowChange) {
       this.props.onStartRowChange(0); // отмотать на 0 роу (потом подправить код таблички чтоб правильно мотала на любые роу - там косяк с офсетом изза хедера)
     }
@@ -106,6 +107,7 @@ export default class IceTable extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(`componentWillReceiveProps=${this.props.startRow} ${nextProps.startRow}`);
     if (this.props.forceUpdateCounter === nextProps.forceUpdateCounter) {
       this._updateTableView();
     }
@@ -117,6 +119,7 @@ export default class IceTable extends React.PureComponent {
   }
 
   componentDidUpdate(/* prevProps */) {
+    //console.log(`componentDidUpdate=${JSON.stringify(this.props.startRow)}`);    
     if (this.props.startRow !== null) {
       if (this.props.onStartRowChange) {
         this.props.onStartRowChange(null); // we need to reset startRow after rendering complete so after we can reset to same row

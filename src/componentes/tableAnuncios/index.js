@@ -44,7 +44,7 @@ export default class TableAnuncios extends Component {
     return this.props.markers && this.props.markers[i];
   }
 
-  _getRowClassNameAt = (i, isHovered) => {
+  _getRowClassNameAt = (i, isHovered) => {    
     return getRowClassNameAt(i, isHovered || i === this.props.hoveredMapRowIndex, i === this.props.firstInvisibleRowIndex);
   }
 

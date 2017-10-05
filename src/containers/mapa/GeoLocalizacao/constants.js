@@ -4,3 +4,5 @@ export const FIELD_ALTERAR_LOCALIDADE_FILTRO = 'localidadeFiltro';
 export const FIELD_CENTER_MAPA = 'centerMapa';
 export const FIELD_KEY_MAPA = 'keyMapa';
 export const FIELD_SHOW_BALLON_MAPA = 'showBallonMapa';
+export const FIELD_HOVERED_MAP_ROWINDEX="hoveredMapRowIndex";
+export const FIELD_HOVER_MAKER_INDEX="hoveredMakerIndex";

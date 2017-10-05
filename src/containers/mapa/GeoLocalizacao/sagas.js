@@ -10,7 +10,10 @@ import {GEOLOCALIZACAO_FORM_MAPA,
         FIELD_ALTERAR_LOCALIDADE_FILTRO,
         FIELD_CENTER_MAPA,
         FIELD_KEY_MAPA,
-        FIELD_SHOW_BALLON_MAPA} from './constants';
+        FIELD_SHOW_BALLON_MAPA,
+        FIELD_HOVERED_MAP_ROWINDEX,
+        FIELD_HOVER_MAKER_INDEX
+       } from './constants';
         
 
 export function* listarAnunciosMapaSaga(data) {  
@@ -72,6 +75,28 @@ export function* closeBallonMapaSaga(data) {
     } catch (err) {
         console.error("Erro showBallonMapa",err)
         toastr.error('Erro', 'Erro ao indice do balão aberto.');
+    }
+}
+
+export function* changeHoveredMapRowIndex(data) {               
+    try {              
+        const hoveredMapRowIndex = data.hoveredMapRowIndex? data.hoveredMapRowIndex:data.hoverMarkerIndex;         
+        arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_HOVERED_MAP_ROWINDEX);                
+        yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_HOVERED_MAP_ROWINDEX,fromJS(hoveredMapRowIndex)));
+    } catch (err) {
+        console.error("Erro changeHoveredMapRowIndex",err)
+        toastr.error('Erro', 'Erro ao alterar indice do balão selecionado.');
+    }
+}
+
+export function* changeHoverMarkerIndex(data) {       
+    try {              
+        const hoverMarkerIndex = data.hoverMarkerIndex? data.hoverMarkerIndex:data.hoveredMapRowIndex;         
+        arrayRemoveAll(GEOLOCALIZACAO_FORM_MAPA, FIELD_HOVER_MAKER_INDEX);                
+        yield put(change(GEOLOCALIZACAO_FORM_MAPA, FIELD_HOVER_MAKER_INDEX,fromJS(hoverMarkerIndex)));
+    } catch (err) {
+        console.error("Erro changeHoverMarkerIndex",err)
+        toastr.error('Erro', 'Erro ao alterar indice do item da lista selecionado.');
     }
 }
 

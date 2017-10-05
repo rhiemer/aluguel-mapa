@@ -4735,6 +4735,9 @@ export default StyleSheet.create({
   'noevents': {
     'pointerEvents': 'none'
   },
+  'allevents': {
+    'pointerEvents': 'all'
+  },
   'events': {
     'pointerEvents': 'initial'
   },
@@ -5334,6 +5337,14 @@ export default StyleSheet.create({
   'map-marker map-marker__markermap_icon_std_orange': {
     'backgroundImage': 'url("../../../assets/icons/map_icons/map_icon_std_orange.svg")'
   },
+  'map-markerhint--balloon hint__content': {
+    'zIndex': '999980',
+    'transition': 'background-color 1.0s ease'
+  },
+  'map-markerhint--balloon:before': {
+    'zIndex': '999981',
+    'transition': 'border-color 1.0s ease'
+  },
   'map-marker map-marker-hint': {
     'cursor': 'default',
     'boxShadow': [{ 'unit': 'px', 'value': 2 }, { 'unit': 'px', 'value': 2 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'string', 'value': 'rgba(0, 0, 0, 0.5)' }]
@@ -5343,7 +5354,8 @@ export default StyleSheet.create({
     'right': [{ 'unit': 'px', 'value': 5 }],
     'top': [{ 'unit': 'px', 'value': 5 }],
     'color': 'red',
-    'visibility': 'hidden'
+    'visibility': 'hidden',
+    'cursor': 'pointer'
   },
   'map-marker map-marker-hint__close-button--visible': {
     'visibility': 'visible'
@@ -5387,40 +5399,40 @@ export default StyleSheet.create({
     'backgroundColor': 'transparent'
   },
   'public_fixedDataTable_main': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTable_header': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'fixedDataTable_hasBottomBorder': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTable_footer': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTableCell_main': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTableCell_main': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTableCell_lastChild': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'fixedDataTable_hasBottomBorder': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'fixedDataTableColumnResizerLine_main': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'fixedDataTableRow_fixedColumnsDivider': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTableCell_main': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'public_fixedDataTable_header': {
-    'border': [{ 'unit': 'px', 'value': 0 }]
+    'border': [{ 'unit': 'string', 'value': 'none' }]
   },
   'fixedDataTable_shadow': {
     'visibility': 'hidden'

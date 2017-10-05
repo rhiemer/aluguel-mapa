@@ -132,21 +132,12 @@ export default class IceFixedTable extends Component {
   }
 
   _onVisibleRowsChange = (height, verticalScrollState) => {
-<<<<<<< HEAD
-    const scrollState = verticalScrollState || this.verticalScrollState; // {index: 0, offset: -154, position: 154, contentHeight: 69401}
-    
-=======
     const scrollState = verticalScrollState || this.verticalScrollState; // {index: 0, offset: -154, position: 154, contentHeight: 69401}    
->>>>>>> 721ee30a272de8606691c0a1691c3aa912dd24cf
     if (!scrollState) {
       return;
     }
 
-<<<<<<< HEAD
     
-=======
-   
->>>>>>> 721ee30a272de8606691c0a1691c3aa912dd24cf
     if (!this.props.rowsCount) {
       this.rowYPositions[0].rowIndex = -1; // reset
       this._onVisibleRowsChangeCall(-1, -1);
